@@ -1,0 +1,27 @@
+package Logica;
+
+import java.util.ArrayList;
+
+public class Mozo extends Usuario{
+    private int telefono;
+    private ArrayList<Mesa> mesasAsignadas;
+    
+    public Mozo(String nombre, String password, String nombreCompleto, int telefono, ArrayList<Mesa> mesasAsignadas) {
+        super(nombre, password, nombreCompleto);
+        this.telefono = telefono;
+        this.mesasAsignadas = new ArrayList<>();
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public ArrayList<Mesa> getMesasAsignadas() {
+        return mesasAsignadas;
+    }
+
+}
