@@ -15,11 +15,12 @@ class SistemaUsuarios {
     return false;
     }
 
-    public void agregarUsuarioGestor(String n, String p, String nc) throws UsuarioException {
-    if (!ValidarUsuario(n, false)) {
-        throw new UsuarioException("Login incorrecto");
+    public boolean agregarUsuarioGestor(String n, String p, String nc) {
+    if (ValidarUsuario(n, false)) {
+        usuariosGestor.add(new Gestor(n, p, nc));
+        return true;
     }
-    usuariosGestor.add(new Gestor(n, p, nc));
+    return false;
     }
         
     public boolean ValidarUsuario(String n, boolean esMozo) {

@@ -5,17 +5,20 @@
 package vista;
 
 import Logica.Gestor;
+import Logica.UnidadProcesadora;
+import controlador.IvistaUnidadesProcesadoras;
+import java.util.ArrayList;
 
 /**
  *
  * @author facu2
  */
-public class VistaUnidadesProcesadoras extends javax.swing.JDialog {
+public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements IvistaUnidadesProcesadoras{
 
     /**
      * Creates new form VistaUnidadesProcesadoras
      */
-    public VistaUnidadesProcesadoras(java.awt.Frame parent, boolean modal, Gestor g) {
+    public VistaUnidadesProcesadoras(java.awt.Frame parent, boolean modal, Gestor g, ArrayList<UnidadProcesadora> unidades){
         super(parent, modal);
         initComponents();
     }
@@ -94,4 +97,11 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mostrarUnidades(ArrayList<UnidadProcesadora> unidades) {
+        for(UnidadProcesadora u : unidades){
+            jComboBox1.addItem(u.getNombre());
+        }
+    }
 }

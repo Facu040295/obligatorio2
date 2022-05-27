@@ -12,20 +12,15 @@ import Logica.Fachada;
  */
 public class ControladorUnidadesProcesadoras {
     
+    IvistaUnidadesProcesadoras interfase;
     Fachada fachada;
     
     public ControladorUnidadesProcesadoras() {
         fachada = Fachada.getInstancia();
+        interfase.mostrarUnidades(fachada.getUnidadesProcesadoras());
     }
     
-    //Constructor
-    public ControladorContador(Contador unModelo, IVistaContador unaVista){
-        this.modelo = unModelo;
-        this.vista = unaVista;
-        modelo.agregar(this);
-        //Inicializacion de la vista
-        vista.mostrarValor(modelo.getValor());
-    }
+    
     
     
 }
