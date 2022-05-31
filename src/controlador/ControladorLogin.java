@@ -3,7 +3,7 @@ package controlador;
 import Logica.Fachada;
 import Logica.Gestor;
 import Logica.Mozo;
-import logica.UsuarioException;
+import Logica.UsuarioException;
 
 public class ControladorLogin {
     IvistaLogin interfase;

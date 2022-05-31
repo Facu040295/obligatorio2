@@ -1,5 +1,6 @@
 package Iu;
 
+import vista.LoginGestor;
 import vista.LoginMozo;
 
 public class MenuPrincipal extends javax.swing.JFrame {
@@ -34,6 +35,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1.add(loginMozo);
 
         loginGestor.setText("Login Gestor");
+        loginGestor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginGestorActionPerformed(evt);
+            }
+        });
         jMenu1.add(loginGestor);
 
         jMenuBar1.add(jMenu1);
@@ -57,6 +63,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void loginMozoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginMozoActionPerformed
         new LoginMozo(null,false).setVisible(true);
     }//GEN-LAST:event_loginMozoActionPerformed
+
+    private void loginGestorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginGestorActionPerformed
+        new LoginGestor(null,false).setVisible(true);
+    }//GEN-LAST:event_loginGestorActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

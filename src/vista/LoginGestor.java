@@ -5,9 +5,11 @@
 package vista;
 
 import Logica.Gestor;
+import Logica.UnidadProcesadora;
 import controlador.ControladorLogin;
 import java.awt.Frame;
-import logica.UsuarioException;
+import Logica.UsuarioException;
+import java.util.ArrayList;
 
 /**
  *

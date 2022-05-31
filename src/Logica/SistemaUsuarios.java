@@ -1,7 +1,7 @@
 package Logica;
 
 import java.util.ArrayList;
-import logica.UsuarioException;
+import Logica.UsuarioException;
 
 class SistemaUsuarios {
     private ArrayList<Mozo> usuariosMozo = new ArrayList();

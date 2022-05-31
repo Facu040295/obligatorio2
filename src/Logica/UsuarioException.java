@@ -1,4 +1,4 @@
-package logica;
+package Logica;
 
 public class UsuarioException extends Exception {
 

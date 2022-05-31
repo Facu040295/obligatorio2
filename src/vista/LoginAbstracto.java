@@ -2,7 +2,7 @@ package vista;
 
 import controlador.IvistaLogin;
 import javax.swing.JOptionPane;
-import logica.UsuarioException;
+import Logica.UsuarioException;
 
 public abstract class LoginAbstracto extends javax.swing.JDialog implements IvistaLogin {
     

@@ -3,7 +3,7 @@ package vista;
 import Logica.Mozo;
 import controlador.ControladorLogin;
 import java.awt.Frame;
-import logica.UsuarioException;
+import Logica.UsuarioException;
 
 public class LoginMozo extends LoginAbstracto{
     

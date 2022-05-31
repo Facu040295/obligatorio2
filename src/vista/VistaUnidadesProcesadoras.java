@@ -6,6 +6,7 @@ package vista;
 
 import Logica.Gestor;
 import Logica.UnidadProcesadora;
+import controlador.ControladorUnidadesProcesadoras;
 import controlador.IvistaUnidadesProcesadoras;
 import java.util.ArrayList;
 
@@ -18,13 +19,10 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements Iv
     /**
      * Creates new form VistaUnidadesProcesadoras
      */
-    public VistaUnidadesProcesadoras(java.awt.Frame parent, boolean modal, Gestor g, ArrayList<UnidadProcesadora> unidades){
+    public VistaUnidadesProcesadoras(java.awt.Frame parent, boolean modal, Gestor g){
         super(parent, modal);
         initComponents();
-    }
-
-    VistaUnidadesProcesadoras(Object object, boolean b, Gestor gestor) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -42,7 +40,11 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements Iv
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Seleccionar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +88,10 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements Iv
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
