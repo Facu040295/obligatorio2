@@ -16,6 +16,7 @@ import java.util.ArrayList;
  */
 public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements IvistaUnidadesProcesadoras{
 
+    ControladorUnidadesProcesadoras controlador = new ControladorUnidadesProcesadoras(this);
     /**
      * Creates new form VistaUnidadesProcesadoras
      */
@@ -23,6 +24,7 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements Iv
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        controlador.listarUnidades();
     }
 
     /**

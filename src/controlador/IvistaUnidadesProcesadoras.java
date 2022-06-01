@@ -13,5 +13,5 @@ import java.util.ArrayList;
  * @author facundo.lopez
  */
 public interface IvistaUnidadesProcesadoras {
-    void mostrarUnidades(ArrayList<UnidadProcesadora> unidades);
+    public void mostrarUnidades(ArrayList<UnidadProcesadora> unidades);
 }

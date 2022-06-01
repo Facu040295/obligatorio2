@@ -5,6 +5,8 @@
 package controlador;
 
 import Logica.Fachada;
+import Logica.UnidadProcesadora;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,14 +15,14 @@ import Logica.Fachada;
 public class ControladorUnidadesProcesadoras {
     
     IvistaUnidadesProcesadoras interfase;
-    Fachada fachada;
+    Fachada fachada = Fachada.getInstancia();
     
-    public ControladorUnidadesProcesadoras() {
-        fachada = Fachada.getInstancia();
-        interfase.mostrarUnidades(fachada.getUnidadesProcesadoras());
+    public ControladorUnidadesProcesadoras(IvistaUnidadesProcesadoras vista) {
+        this.interfase = vista;
     }
     
-    
-    
+    public void listarUnidades(){
+        interfase.mostrarUnidades(fachada.getUnidadesProcesadoras());
+    }
     
 }
