@@ -1,8 +1,9 @@
 package Logica;
 
+import Observador.Observable;
 import java.util.ArrayList;
 
-public class Mozo extends Usuario{
+public class Mozo extends Usuario {
     private int telefono;
     private ArrayList<Mesa> mesasAsignadas;
     
@@ -12,6 +13,10 @@ public class Mozo extends Usuario{
         this.mesasAsignadas = new ArrayList<>();
     }
 
+    public enum Eventos {
+        actualizarMesas;
+    }
+    
     public int getTelefono() {
         return telefono;
     }

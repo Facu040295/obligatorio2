@@ -4,11 +4,13 @@ public class Mesa {
     private int numero;
     private Mozo mozoAsignado;
     private Servicio servicio;
+    private boolean ocupado;
     
     public Mesa(int numero, Mozo mozoAsignado, Servicio servicio) {
         this.numero = numero;
         this.mozoAsignado = mozoAsignado;
         this.servicio = servicio;
+        this.ocupado = false;
     }
 
     public int getNumero() {
@@ -33,6 +35,14 @@ public class Mesa {
 
     public void setServicio(Servicio servicio) {
         this.servicio = servicio;
+    }
+
+    public boolean isOcupado() {
+        return ocupado;
+    }
+
+    public void setOcupado(boolean ocupado) {
+        this.ocupado = ocupado;
     }
     
 }

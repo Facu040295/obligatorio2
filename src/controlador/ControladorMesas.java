@@ -1,25 +1,36 @@
 package controlador;
 
 import Logica.Fachada;
+import Logica.Mesa;
+import Logica.Mozo;
 import Observador.Observable;
 import Observador.Observador;
-import vista.VistaMozos;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 public class ControladorMesas implements Observador {
 
+    //IvistaMesas miInterface;
     Fachada fachada;
+    Mozo mozo;
+    ArrayList<Mesa> mesasAsignadas;
     
-    public ControladorMesas() {
+    public ControladorMesas(Mozo m) {
         fachada = Fachada.getInstancia();
-    }
-
-    public ControladorMesas(VistaMozos aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.mozo = m;
+        this.mesasAsignadas = m.getMesasAsignadas();
     }
     
     @Override
     public void actualizar(Object evento, Observable origen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //if (evento.equals(mozo.Eventos.actualizarMesas)) {
+
     }
+
+    //public void AsignarImagenMesa(Mozo m) {
+        //for (Mesa mesa : mesasAsignadas){
+            
+        //}
+    //}
     
 }
