@@ -252,7 +252,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     }//GEN-LAST:event_btn_Mesa12ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        //
+        controlador.salir();
     }//GEN-LAST:event_formWindowClosed
 
 
@@ -294,7 +294,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
             }
         }
     }
-
+    
     @Override
     public void mostrarMesasAsignadas(ArrayList<Mesa> m, boolean ocupada) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

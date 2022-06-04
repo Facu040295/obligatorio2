@@ -32,5 +32,9 @@ public class ControladorMesas implements Observador {
             
         //}
     //}
+
+    public void salir() {
+        fachada.quitar(this);
+    }
     
 }

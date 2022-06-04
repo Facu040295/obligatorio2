@@ -6,7 +6,7 @@ import Logica.UsuarioException;
 class SistemaUsuarios {
     private ArrayList<Mozo> usuariosMozo = new ArrayList();
     private ArrayList<Gestor> usuariosGestor = new ArrayList();
-    private ArrayList<Usuario> usuariosIngresados = new ArrayList();
+    private ArrayList<Sesion> usuariosIngresados = new ArrayList();
     
     public boolean agregarUsuarioMozo(String n, String p, String nc) {
     if (ValidarUsuario(n, true)) {
@@ -42,31 +42,33 @@ class SistemaUsuarios {
     }
     
     public Mozo loginMozo(String u, String p) throws UsuarioException {
-        Usuario m;
-        m = login(u, p, usuariosIngresados);
-        if(yaIngresado(m)){
-            throw new UsuarioException("Ud. ya está logueado");
-        }
-        m = (Mozo) login(u, p, usuariosMozo);
-        if (m == null) {
+        Sesion s = null;
+        Usuario usuarioMozo = (Mozo) login(u, p, usuariosMozo);
+        if (usuarioMozo == null) {
             throw new UsuarioException("Nombre de usuario y/o contraseña incorrectos");
         }
-        usuariosIngresados.add(m);
-        return (Mozo) m;
+        Mozo m = (Mozo) usuarioMozo;
+        s = new Sesion (null, m);
+        if(yaIngresado(s)){
+            throw new UsuarioException("Ud. ya está logueado");
+        }
+        usuariosIngresados.add(s);
+        return m;
     }
 
     public Gestor loginGestor(String nom, String pwd) throws UsuarioException {
-        Usuario g;
-        g = login(nom, pwd, usuariosIngresados);
-        if(yaIngresado(g)){
-            throw new UsuarioException("Ud. ya está logueado");
-        }
-        g = (Gestor) login(nom, pwd, usuariosGestor);
-        if (g == null) {
+        Sesion s = null;
+        Usuario u = (Gestor) login(nom, pwd, usuariosGestor);
+        if (u == null) {
             throw new UsuarioException("Nombre de usuario y/o contraseña incorrectos");
         }
-        usuariosIngresados.add(g);
-        return (Gestor) g;
+        Gestor g = (Gestor) u;
+        s = new Sesion (g, null);
+        if(yaIngresado(s)){
+            throw new UsuarioException("Ud. ya está logueado");
+        }
+        usuariosIngresados.add(s);
+        return g;
     }
     
     private Usuario login(String nom, String pwd, ArrayList usuarios) {
@@ -80,12 +82,19 @@ class SistemaUsuarios {
         return null;
     }
     
-    public boolean yaIngresado(Usuario u) {
-        for (Usuario usuariosIngresados : usuariosIngresados) {
-            if (usuariosIngresados.equals(u)) {
+    public boolean yaIngresado(Sesion s) {
+        for (Sesion usuarioIngresado : usuariosIngresados) {
+            if (usuarioIngresado.getUsuarioGestor() == s.getUsuarioGestor()) {
+                return true;
+            }
+            if (usuarioIngresado.getUsuarioMozo() == s.getUsuarioMozo()) {
                 return true;
             }
         }
         return false;
+    }
+    
+    public void logout(Sesion s){
+        usuariosIngresados.remove(s);
     }
 }
