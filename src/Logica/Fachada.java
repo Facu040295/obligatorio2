@@ -7,6 +7,7 @@ import Logica.UsuarioException;
 public class Fachada extends Observable {
     private SistemaUsuarios sUsuarios = new SistemaUsuarios();
     private SistemaUnidadesProcesadoras sUnidadesProcesadoras = new SistemaUnidadesProcesadoras();
+    
     private static Fachada instancia = new Fachada();
     
     public static Fachada getInstancia() {
@@ -16,8 +17,8 @@ public class Fachada extends Observable {
     private Fachada() {
     }
     
-    public void agregarUsuarioMozo(String n, String p, String nc) {
-        sUsuarios.agregarUsuarioMozo(n, p, nc);
+    public void agregarUsuarioMozo(String n, String p, String nc, int telefono) {
+        sUsuarios.agregarUsuarioMozo(n, p, nc, telefono);
     }
 
     public void agregarUsuarioGestor(String n, String p, String nc) {
@@ -38,5 +39,9 @@ public class Fachada extends Observable {
 
     public ArrayList<UnidadProcesadora> getUnidadesProcesadoras() {
         return sUnidadesProcesadoras.getUnidades();
+    }
+    
+    public void logout(Sesion s) {
+        sUsuarios.logout(s);
     }
 }

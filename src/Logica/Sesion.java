@@ -4,7 +4,7 @@ package Logica;
 import java.util.Date;
 
 
-class Sesion {
+public class Sesion {
     private Date fechaHoraIngreso = new Date();
     private Gestor usuarioGestor;
     private Mozo usuarioMozo;

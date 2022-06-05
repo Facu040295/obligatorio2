@@ -6,6 +6,8 @@ import controlador.ControladorMesas;
 import controlador.IvistaMesas;
 import java.awt.Color;
 import java.util.ArrayList;
+import Logica.Fachada;
+import Logica.Sesion;
 
 public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
 
@@ -16,7 +18,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         initComponents();
         setLocationRelativeTo(null);
         this.controlador = new ControladorMesas(m);
-        cambiarColorMesas(m);
+        cambiarColorMesas();
     }
 
     @SuppressWarnings("unchecked")
@@ -191,16 +193,16 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Panel_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 413, Short.MAX_VALUE))
+                .addGap(0, 378, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Panel_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 116, Short.MAX_VALUE))
+                .addGap(0, 152, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 790, 465);
+        setBounds(0, 0, 755, 501);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_Mesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa1ActionPerformed
@@ -252,7 +254,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     }//GEN-LAST:event_btn_Mesa12ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        controlador.salir();
+        logout();
     }//GEN-LAST:event_formWindowClosed
 
 
@@ -273,7 +275,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     // End of variables declaration//GEN-END:variables
 
     
-    private void cambiarColorMesas(Mozo m) {
+    private void cambiarColorMesas() {
         btn_Mesa1.setVisible(true);
         btn_Mesa2.setVisible(true);
         btn_Mesa3.setVisible(true);
@@ -286,13 +288,17 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         btn_Mesa10.setVisible(true);
         btn_Mesa11.setVisible(true);
         btn_Mesa12.setVisible(true);
-        ArrayList<Mesa> mesasAsignadas = m.getMesasAsignadas();
+        ArrayList<Mesa> mesasAsignadas = controlador.MesasAsignadas();
         for(Mesa mesa : mesasAsignadas) {
             String s = "btn_Mesa" + "" + mesa.getNumero() + "";
-            if (btn_Mesa1.equals(s)){
-                btn_Mesa1.setVisible(true);
+            if (mesa.isOcupado()){
+                btn_Mesa1.setVisible(false);
             }
         }
+    }
+    
+    public void logout() {
+       controlador.logout();
     }
     
     @Override

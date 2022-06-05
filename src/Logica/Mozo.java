@@ -7,10 +7,10 @@ public class Mozo extends Usuario {
     private int telefono;
     private ArrayList<Mesa> mesasAsignadas;
     
-    public Mozo(String nombre, String password, String nombreCompleto/*, int telefono*/) {
+    public Mozo(String nombre, String password, String nombreCompleto, int telefono) {
         super(nombre, password, nombreCompleto);
-        //this.telefono = telefono;
-        this.mesasAsignadas = new ArrayList<>();
+        this.telefono = telefono;
+        this.mesasAsignadas = new ArrayList<Mesa>();
     }
 
     public enum Eventos {

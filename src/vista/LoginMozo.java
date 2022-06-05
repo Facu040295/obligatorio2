@@ -1,6 +1,7 @@
 package vista;
 
 import Logica.Mozo;
+import Logica.Sesion;
 import controlador.ControladorLogin;
 import java.awt.Frame;
 import Logica.UsuarioException;

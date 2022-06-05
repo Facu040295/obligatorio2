@@ -20,7 +20,6 @@ public class ControladorLogin {
     }
 
     public void loginGestor(String nom, String pwd) throws UsuarioException{
-
         Gestor g = fachada.loginGestor(nom, pwd);
         interfase.ejecutarProximoCasoUso(g);
     }

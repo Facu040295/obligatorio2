@@ -6,19 +6,27 @@ import Logica.Mozo;
 import Observador.Observable;
 import Observador.Observador;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
+import Logica.Sesion;
 
 public class ControladorMesas implements Observador {
 
     //IvistaMesas miInterface;
     Fachada fachada;
     Mozo mozo;
-    ArrayList<Mesa> mesasAsignadas;
+    Sesion sesion;
     
     public ControladorMesas(Mozo m) {
         fachada = Fachada.getInstancia();
-        this.mozo = m;
-        this.mesasAsignadas = m.getMesasAsignadas();
+        mozo = m;
+    }
+    
+    public ArrayList<Mesa> MesasAsignadas() {
+        return mozo.getMesasAsignadas();
+    }
+    
+    public void logout() {
+       fachada.logout(sesion);
+       fachada.quitar(this);
     }
     
     @Override
@@ -26,15 +34,4 @@ public class ControladorMesas implements Observador {
         //if (evento.equals(mozo.Eventos.actualizarMesas)) {
 
     }
-
-    //public void AsignarImagenMesa(Mozo m) {
-        //for (Mesa mesa : mesasAsignadas){
-            
-        //}
-    //}
-
-    public void salir() {
-        fachada.quitar(this);
-    }
-    
 }

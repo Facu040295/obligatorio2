@@ -6,10 +6,9 @@ public class Mesa {
     private Servicio servicio;
     private boolean ocupado;
     
-    public Mesa(int numero, Mozo mozoAsignado, Servicio servicio) {
+    public Mesa(int numero, Mozo mozoAsignado) {
         this.numero = numero;
         this.mozoAsignado = mozoAsignado;
-        this.servicio = servicio;
         this.ocupado = false;
     }
 

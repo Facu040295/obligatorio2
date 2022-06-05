@@ -8,9 +8,9 @@ class SistemaUsuarios {
     private ArrayList<Gestor> usuariosGestor = new ArrayList();
     private ArrayList<Sesion> usuariosIngresados = new ArrayList();
     
-    public boolean agregarUsuarioMozo(String n, String p, String nc) {
+    public boolean agregarUsuarioMozo(String n, String p, String nc, int telefono) {
     if (ValidarUsuario(n, true)) {
-        usuariosMozo.add(new Mozo(n, p, nc));
+        usuariosMozo.add(new Mozo(n, p, nc, telefono));
         return true;
     }
     return false;
