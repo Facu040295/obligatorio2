@@ -32,4 +32,16 @@ public class SistemaUnidadesProcesadoras {
     public ArrayList<UnidadProcesadora> getUnidades() {
         return unidadesProcesadoras;
     }
+    
+    public ArrayList<Pedido> getPedidosUnidad(UnidadProcesadora u) {
+        ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
+        for(UnidadProcesadora unidad : this.getUnidades()){
+            if (unidad == u) {
+                for (Pedido p : unidad.getPedidos()) {
+                    pedidos.add(p);
+                }
+            }
+        }
+        return pedidos;
+    }
 }

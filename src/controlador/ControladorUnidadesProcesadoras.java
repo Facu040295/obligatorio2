@@ -36,4 +36,8 @@ public class ControladorUnidadesProcesadoras {
     
     }
     
+    public void listarPedidosUnidadProcesadora(UnidadProcesadora u){
+    
+    }
+    
 }

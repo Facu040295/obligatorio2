@@ -1,10 +1,12 @@
 package Logica;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Gestor extends Usuario{
     private Date ultimaConexion;
+    private ArrayList<Pedido> pedidos;
     
     public Gestor(String nombre, String password, String nombreCompleto) {
         super(nombre, password, nombreCompleto);
@@ -17,6 +19,14 @@ public class Gestor extends Usuario{
 
     public void setUltimaConexion(Date ultimaConexion) {
         this.ultimaConexion = ultimaConexion;
+    }
+    
+    public ArrayList<Pedido> getPedidos() {
+        return pedidos;
+    }
+    
+    public void setPedido(Pedido p){
+        pedidos.add(p);
     }
     
 }
