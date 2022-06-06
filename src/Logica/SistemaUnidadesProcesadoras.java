@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author facundo.lopez
  */
 public class SistemaUnidadesProcesadoras {
-    public ArrayList<UnidadProcesadora> unidadesProcesadoras = new ArrayList<UnidadProcesadora>();
+    private ArrayList<UnidadProcesadora> unidadesProcesadoras = new ArrayList<UnidadProcesadora>();
     
     public void agregarUnidadProcesadora(String nombre){
         if(validarUnidad(nombre)){
@@ -44,4 +44,6 @@ public class SistemaUnidadesProcesadoras {
         }
         return pedidos;
     }
+    
+    
 }
