@@ -84,10 +84,10 @@ class SistemaUsuarios {
     
     public boolean yaIngresado(Sesion s) {
         for (Sesion usuarioIngresado : usuariosIngresados) {
-            if (usuarioIngresado.getUsuarioGestor() == s.getUsuarioGestor()) {
+            if (usuarioIngresado.getUsuarioGestor() == s.getUsuarioGestor()&&usuarioIngresado.getUsuarioMozo() == null) {
                 return true;
             }
-            if (usuarioIngresado.getUsuarioMozo() == s.getUsuarioMozo()) {
+            if (usuarioIngresado.getUsuarioMozo() == s.getUsuarioMozo()&&usuarioIngresado.getUsuarioGestor() == null) {
                 return true;
             }
         }
@@ -96,5 +96,14 @@ class SistemaUsuarios {
     
     public void logout(Sesion s){
         usuariosIngresados.remove(s);
+    }
+
+    public void agregarMesa(int numero, String m) {      
+      for (Mozo mozo : usuariosMozo) {
+        if (mozo.getUser().equals(m) && mozo.getMesasAsignadas().size() < 5) {
+            Mesa mesa = new Mesa(numero, mozo);
+            mozo.getMesasAsignadas().add(mesa);
+        }
+      }
     }
 }

@@ -8,17 +8,19 @@ import java.awt.Color;
 import java.util.ArrayList;
 import Logica.Fachada;
 import Logica.Sesion;
+import controlador.ControladorLogin;
 
 public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
 
     private ControladorMesas controlador;
+    //private ControladorLogin controladorLog;
 
     public VistaMozos(java.awt.Frame parent, boolean modal, Mozo m) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         this.controlador = new ControladorMesas(m);
-        cambiarColorMesas();
+        cargarGenerales(m);
     }
 
     @SuppressWarnings("unchecked")
@@ -38,6 +40,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         btn_Mesa10 = new javax.swing.JButton();
         btn_Mesa11 = new javax.swing.JButton();
         btn_Mesa12 = new javax.swing.JButton();
+        lb_nombreMozo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -186,6 +189,10 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                     .addComponent(btn_Mesa12, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        lb_nombreMozo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lb_nombreMozo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_nombreMozo.setText("Mozo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,13 +200,19 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Panel_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 378, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_nombreMozo, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Panel_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 152, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lb_nombreMozo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 755, 501);
@@ -272,27 +285,127 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     private javax.swing.JButton btn_Mesa7;
     private javax.swing.JButton btn_Mesa8;
     private javax.swing.JButton btn_Mesa9;
+    private javax.swing.JLabel lb_nombreMozo;
     // End of variables declaration//GEN-END:variables
 
+    private void cargarGenerales(Mozo m) {
+        btn_Mesa1.setVisible(false);
+        btn_Mesa2.setVisible(false);
+        btn_Mesa3.setVisible(false);
+        btn_Mesa4.setVisible(false);
+        btn_Mesa5.setVisible(false);
+        btn_Mesa6.setVisible(false);
+        btn_Mesa7.setVisible(false);
+        btn_Mesa8.setVisible(false);
+        btn_Mesa9.setVisible(false);
+        btn_Mesa10.setVisible(false);
+        btn_Mesa11.setVisible(false);
+        btn_Mesa12.setVisible(false);
+        lb_nombreMozo.setText("Mozo: " + m.getNombreCompleto());
+        cambiarColorMesas();
+    }
     
     private void cambiarColorMesas() {
-        btn_Mesa1.setVisible(true);
-        btn_Mesa2.setVisible(true);
-        btn_Mesa3.setVisible(true);
-        btn_Mesa4.setVisible(true);
-        btn_Mesa5.setVisible(true);
-        btn_Mesa6.setVisible(true);
-        btn_Mesa7.setVisible(true);
-        btn_Mesa8.setVisible(true);
-        btn_Mesa9.setVisible(true);
-        btn_Mesa10.setVisible(true);
-        btn_Mesa11.setVisible(true);
-        btn_Mesa12.setVisible(true);
+        
         ArrayList<Mesa> mesasAsignadas = controlador.MesasAsignadas();
         for(Mesa mesa : mesasAsignadas) {
             String s = "btn_Mesa" + "" + mesa.getNumero() + "";
-            if (mesa.isOcupado()){
-                btn_Mesa1.setVisible(false);
+            switch (s) {
+                case "btn_Mesa1":
+                btn_Mesa1.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa1.setBackground(Color.RED);
+                } else
+                    btn_Mesa1.setBackground(Color.GREEN);
+                break;
+                
+                case "btn_Mesa2":
+                btn_Mesa2.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa2.setBackground(Color.RED);
+                } else
+                    btn_Mesa2.setBackground(Color.GREEN);
+                break;
+                
+                case "btn_Mesa3":
+                btn_Mesa3.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa3.setBackground(Color.RED);
+                } else
+                    btn_Mesa3.setBackground(Color.GREEN);
+                break;
+                
+                case "btn_Mesa4":
+                btn_Mesa4.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa4.setBackground(Color.RED);
+                } else
+                    btn_Mesa4.setBackground(Color.GREEN);
+                break;
+                
+                case "btn_Mesa5":
+                btn_Mesa5.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa5.setBackground(Color.RED);
+                } else
+                    btn_Mesa5.setBackground(Color.GREEN);
+                break;
+                
+                case "btn_Mesa6":
+                btn_Mesa6.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa6.setBackground(Color.RED);
+                } else
+                    btn_Mesa6.setBackground(Color.GREEN);
+                break;
+                
+                case "btn_Mesa7":
+                btn_Mesa7.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa7.setBackground(Color.RED);
+                } else
+                    btn_Mesa7.setBackground(Color.GREEN);
+                break;
+                
+                case "btn_Mesa8":
+                btn_Mesa8.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa8.setBackground(Color.RED);
+                } else
+                    btn_Mesa8.setBackground(Color.GREEN);
+                break;
+                
+                case "btn_Mesa9":
+                btn_Mesa9.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa9.setBackground(Color.RED);
+                } else
+                    btn_Mesa9.setBackground(Color.GREEN);
+                break;
+                
+                case "btn_Mesa10":
+                btn_Mesa10.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa10.setBackground(Color.RED);
+                } else
+                    btn_Mesa10.setBackground(Color.GREEN);
+                break;
+                
+                case "btn_Mesa11":
+                btn_Mesa11.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa11.setBackground(Color.RED);
+                } else
+                    btn_Mesa11.setBackground(Color.GREEN);
+                break;
+                
+                case "btn_Mesa12":
+                btn_Mesa12.setVisible(true);
+                if (mesa.isOcupado()){
+                    btn_Mesa12.setBackground(Color.RED);
+                } else
+                    btn_Mesa12.setBackground(Color.GREEN);
+                break;
             }
         }
     }

@@ -29,9 +29,5 @@ public class Mozo extends Usuario {
         return mesasAsignadas;
     }
 
-    public void setMesasAsignadas(ArrayList<Mesa> mesasAsignadas) {
-        this.mesasAsignadas = mesasAsignadas;
-    }
-
     
 }

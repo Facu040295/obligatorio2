@@ -10,13 +10,13 @@ public class DatosPrueba {
         Fachada fachada = Fachada.getInstancia();
         
         //---- Mozos ----------------------------------
-        ArrayList<Mesa> mesas = new ArrayList<>();
-        fachada.agregarUsuarioMozo("a", "a", "Mozo 1", 123456789);
-        fachada.agregarUsuarioMozo("b", "b", "Mozo 2", 123456789);
-        fachada.agregarUsuarioMozo("c", "c", "Mozo 3", 123456789);
-        fachada.agregarUsuarioMozo("d", "d", "Mozo 4", 123456789);
-        fachada.agregarUsuarioMozo("e", "e", "Mozo 5", 123456789);
-        fachada.agregarUsuarioMozo("f", "f", "Mozo 6", 123456789);
+        //ArrayList<Mesa> mesas = new ArrayList<>();
+        fachada.agregarUsuarioMozo("a", "a", "Nombre del Mozo 1", 123456789);
+        fachada.agregarUsuarioMozo("b", "b", "Nombre del Mozo 2", 123456789);
+        fachada.agregarUsuarioMozo("c", "c", "Nombre del Mozo 3", 123456789);
+        fachada.agregarUsuarioMozo("d", "d", "Nombre del Mozo 4", 123456789);
+        fachada.agregarUsuarioMozo("e", "e", "Nombre del Mozo 5", 123456789);
+        fachada.agregarUsuarioMozo("f", "f", "Nombre del Mozo 6", 123456789);
         
         //---- Gestores -----------------------------------
         fachada.agregarUsuarioGestor("a", "a", "Gestor 1");
@@ -32,8 +32,18 @@ public class DatosPrueba {
         fachada.agregarUnidadProcesadora("Barra de Sushi");
 
         //---- Mesas ----------------------
-        Mozo mozo1 = new Mozo("a", "a", "Mozo 1", 123456789);
-        Mesa mesa1 = new Mesa(1, mozo1);
-        mozo1.getMesasAsignadas().add(mesa1);
+        fachada.agregarMesa(1,"a");
+        fachada.agregarMesa(3,"a");
+        fachada.agregarMesa(4,"a");
+        fachada.agregarMesa(10,"a");
+        fachada.agregarMesa(12,"a");
+        fachada.agregarMesa(2,"a");
+        
+        fachada.agregarMesa(2,"b");
+        fachada.agregarMesa(5,"b");
+        fachada.agregarMesa(6,"b");
+        fachada.agregarMesa(7,"b");
+        fachada.agregarMesa(8,"b");
+        fachada.agregarMesa(9,"b");
     }
 }
