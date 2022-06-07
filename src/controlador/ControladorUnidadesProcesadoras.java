@@ -24,20 +24,11 @@ public class ControladorUnidadesProcesadoras {
         this.IvistaUnidadesProcesadoras = vista;
     }
     
-    public ControladorUnidadesProcesadoras(IvistaMonitorPedidos vista){
-        this.ivistaMonitorPedidos = vista;
-    }
+    
     
     public void listarUnidades(){
         IvistaUnidadesProcesadoras.mostrarUnidades(fachada.getUnidadesProcesadoras());
     }
-    
-    public void listarPedidosGestor(Gestor g){
-    
-    }
-    
-    public void listarPedidosUnidadProcesadora(UnidadProcesadora u){
-    
-    }
+   
     
 }
