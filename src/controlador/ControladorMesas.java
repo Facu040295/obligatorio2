@@ -7,6 +7,7 @@ import Observador.Observable;
 import Observador.Observador;
 import java.util.ArrayList;
 import Logica.Sesion;
+import java.awt.Color;
 
 public class ControladorMesas implements Observador {
 
@@ -34,4 +35,5 @@ public class ControladorMesas implements Observador {
         //if (evento.equals(mozo.Eventos.actualizarMesas)) {
 
     }
+
 }
