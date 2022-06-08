@@ -33,13 +33,6 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         btn_Mesa3 = new javax.swing.JButton();
         btn_Mesa4 = new javax.swing.JButton();
         btn_Mesa5 = new javax.swing.JButton();
-        btn_Mesa6 = new javax.swing.JButton();
-        btn_Mesa7 = new javax.swing.JButton();
-        btn_Mesa8 = new javax.swing.JButton();
-        btn_Mesa9 = new javax.swing.JButton();
-        btn_Mesa10 = new javax.swing.JButton();
-        btn_Mesa11 = new javax.swing.JButton();
-        btn_Mesa12 = new javax.swing.JButton();
         lb_nombreMozo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -49,87 +42,38 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
             }
         });
 
-        btn_Mesa1.setText("Mesa 1");
+        btn_Mesa1.setText("Mesa");
         btn_Mesa1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Mesa1ActionPerformed(evt);
             }
         });
 
-        btn_Mesa2.setText("Mesa 2");
+        btn_Mesa2.setText("Mesa");
         btn_Mesa2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Mesa2ActionPerformed(evt);
             }
         });
 
-        btn_Mesa3.setText("Mesa 3");
+        btn_Mesa3.setText("Mesa");
         btn_Mesa3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Mesa3ActionPerformed(evt);
             }
         });
 
-        btn_Mesa4.setText("Mesa 4");
+        btn_Mesa4.setText("Mesa");
         btn_Mesa4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Mesa4ActionPerformed(evt);
             }
         });
 
-        btn_Mesa5.setText("Mesa 5");
+        btn_Mesa5.setText("Mesa");
         btn_Mesa5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Mesa5ActionPerformed(evt);
-            }
-        });
-
-        btn_Mesa6.setText("Mesa 6");
-        btn_Mesa6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Mesa6ActionPerformed(evt);
-            }
-        });
-
-        btn_Mesa7.setText("Mesa 7");
-        btn_Mesa7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Mesa7ActionPerformed(evt);
-            }
-        });
-
-        btn_Mesa8.setText("Mesa 8");
-        btn_Mesa8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Mesa8ActionPerformed(evt);
-            }
-        });
-
-        btn_Mesa9.setText("Mesa 9");
-        btn_Mesa9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Mesa9ActionPerformed(evt);
-            }
-        });
-
-        btn_Mesa10.setText("Mesa 10");
-        btn_Mesa10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Mesa10ActionPerformed(evt);
-            }
-        });
-
-        btn_Mesa11.setText("Mesa 11");
-        btn_Mesa11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Mesa11ActionPerformed(evt);
-            }
-        });
-
-        btn_Mesa12.setText("Mesa 12");
-        btn_Mesa12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Mesa12ActionPerformed(evt);
             }
         });
 
@@ -141,29 +85,15 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                 .addGroup(Panel_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel_MesasLayout.createSequentialGroup()
                         .addComponent(btn_Mesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_Mesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_Mesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel_MesasLayout.createSequentialGroup()
                         .addComponent(btn_Mesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Mesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Mesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Panel_MesasLayout.createSequentialGroup()
-                        .addComponent(btn_Mesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Mesa8, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Mesa9, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Panel_MesasLayout.createSequentialGroup()
-                        .addComponent(btn_Mesa10, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Mesa11, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Mesa12, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_Mesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         Panel_MesasLayout.setVerticalGroup(
             Panel_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,18 +105,8 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Panel_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Mesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Mesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Mesa6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Panel_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Mesa7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Mesa8, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Mesa9, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Panel_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Mesa10, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Mesa11, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Mesa12, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_Mesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lb_nombreMozo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -200,19 +120,19 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Panel_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lb_nombreMozo, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Panel_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 152, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lb_nombreMozo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(430, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Panel_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 755, 501);
@@ -230,61 +150,26 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_Mesa5ActionPerformed
 
-    private void btn_Mesa7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_Mesa7ActionPerformed
-
-    private void btn_Mesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_Mesa4ActionPerformed
-
-    private void btn_Mesa8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_Mesa8ActionPerformed
-
     private void btn_Mesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_Mesa3ActionPerformed
-
-    private void btn_Mesa6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_Mesa6ActionPerformed
-
-    private void btn_Mesa9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_Mesa9ActionPerformed
-
-    private void btn_Mesa10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_Mesa10ActionPerformed
-
-    private void btn_Mesa11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_Mesa11ActionPerformed
-
-    private void btn_Mesa12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_Mesa12ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         logout();
     }//GEN-LAST:event_formWindowClosed
 
+    private void btn_Mesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Mesa4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel_Mesas;
     private javax.swing.JButton btn_Mesa1;
-    private javax.swing.JButton btn_Mesa10;
-    private javax.swing.JButton btn_Mesa11;
-    private javax.swing.JButton btn_Mesa12;
     private javax.swing.JButton btn_Mesa2;
     private javax.swing.JButton btn_Mesa3;
     private javax.swing.JButton btn_Mesa4;
     private javax.swing.JButton btn_Mesa5;
-    private javax.swing.JButton btn_Mesa6;
-    private javax.swing.JButton btn_Mesa7;
-    private javax.swing.JButton btn_Mesa8;
-    private javax.swing.JButton btn_Mesa9;
     private javax.swing.JLabel lb_nombreMozo;
     // End of variables declaration//GEN-END:variables
 
@@ -294,121 +179,68 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         btn_Mesa3.setVisible(false);
         btn_Mesa4.setVisible(false);
         btn_Mesa5.setVisible(false);
-        btn_Mesa6.setVisible(false);
-        btn_Mesa7.setVisible(false);
-        btn_Mesa8.setVisible(false);
-        btn_Mesa9.setVisible(false);
-        btn_Mesa10.setVisible(false);
-        btn_Mesa11.setVisible(false);
-        btn_Mesa12.setVisible(false);
         lb_nombreMozo.setText("Mozo: " + m.getNombreCompleto());
         cambiarColorMesas();
     }
     
     private void cambiarColorMesas() {
-        
         ArrayList<Mesa> mesasAsignadas = controlador.MesasAsignadas();
+        int contador = 1;
         for(Mesa mesa : mesasAsignadas) {
-            String s = "btn_Mesa" + "" + mesa.getNumero() + "";
+            String s = "btn_Mesa" + "" + contador + "";
             switch (s) {
                 case "btn_Mesa1":
                 btn_Mesa1.setVisible(true);
+                btn_Mesa1.setText("Mesa " + mesa.getNumero());
                 if (mesa.isOcupado()){
                     btn_Mesa1.setBackground(Color.RED);
                 } else
                     btn_Mesa1.setBackground(Color.GREEN);
+                contador++;
                 break;
                 
                 case "btn_Mesa2":
                 btn_Mesa2.setVisible(true);
+                btn_Mesa2.setText("Mesa " + mesa.getNumero());
                 if (mesa.isOcupado()){
                     btn_Mesa2.setBackground(Color.RED);
                 } else
                     btn_Mesa2.setBackground(Color.GREEN);
+                contador++;
                 break;
                 
                 case "btn_Mesa3":
                 btn_Mesa3.setVisible(true);
+                btn_Mesa3.setText("Mesa " + mesa.getNumero());
                 if (mesa.isOcupado()){
                     btn_Mesa3.setBackground(Color.RED);
                 } else
                     btn_Mesa3.setBackground(Color.GREEN);
+                contador++;
                 break;
                 
                 case "btn_Mesa4":
                 btn_Mesa4.setVisible(true);
+                btn_Mesa4.setText("Mesa " + mesa.getNumero());
                 if (mesa.isOcupado()){
                     btn_Mesa4.setBackground(Color.RED);
                 } else
                     btn_Mesa4.setBackground(Color.GREEN);
+                contador++;
                 break;
                 
                 case "btn_Mesa5":
                 btn_Mesa5.setVisible(true);
+                btn_Mesa5.setText("Mesa " + mesa.getNumero());
                 if (mesa.isOcupado()){
                     btn_Mesa5.setBackground(Color.RED);
                 } else
                     btn_Mesa5.setBackground(Color.GREEN);
+                contador++;
                 break;
-                
-                case "btn_Mesa6":
-                btn_Mesa6.setVisible(true);
-                if (mesa.isOcupado()){
-                    btn_Mesa6.setBackground(Color.RED);
-                } else
-                    btn_Mesa6.setBackground(Color.GREEN);
-                break;
-                
-                case "btn_Mesa7":
-                btn_Mesa7.setVisible(true);
-                if (mesa.isOcupado()){
-                    btn_Mesa7.setBackground(Color.RED);
-                } else
-                    btn_Mesa7.setBackground(Color.GREEN);
-                break;
-                
-                case "btn_Mesa8":
-                btn_Mesa8.setVisible(true);
-                if (mesa.isOcupado()){
-                    btn_Mesa8.setBackground(Color.RED);
-                } else
-                    btn_Mesa8.setBackground(Color.GREEN);
-                break;
-                
-                case "btn_Mesa9":
-                btn_Mesa9.setVisible(true);
-                if (mesa.isOcupado()){
-                    btn_Mesa9.setBackground(Color.RED);
-                } else
-                    btn_Mesa9.setBackground(Color.GREEN);
-                break;
-                
-                case "btn_Mesa10":
-                btn_Mesa10.setVisible(true);
-                if (mesa.isOcupado()){
-                    btn_Mesa10.setBackground(Color.RED);
-                } else
-                    btn_Mesa10.setBackground(Color.GREEN);
-                break;
-                
-                case "btn_Mesa11":
-                btn_Mesa11.setVisible(true);
-                if (mesa.isOcupado()){
-                    btn_Mesa11.setBackground(Color.RED);
-                } else
-                    btn_Mesa11.setBackground(Color.GREEN);
-                break;
-                
-                case "btn_Mesa12":
-                btn_Mesa12.setVisible(true);
-                if (mesa.isOcupado()){
-                    btn_Mesa12.setBackground(Color.RED);
-                } else
-                    btn_Mesa12.setBackground(Color.GREEN);
-                break;
-            }
         }
     }
+}
     
     public void logout() {
        controlador.logout();

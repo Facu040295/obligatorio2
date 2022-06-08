@@ -33,22 +33,22 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="Panel_Mesas" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="lb_nombreMozo" min="-2" pref="358" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="Panel_Mesas" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="152" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lb_nombreMozo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="430" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="Panel_Mesas" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,34 +63,18 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="btn_Mesa1" min="-2" pref="113" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btn_Mesa2" min="-2" pref="113" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btn_Mesa3" min="-2" pref="113" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="btn_Mesa4" min="-2" pref="113" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btn_Mesa5" min="-2" pref="113" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn_Mesa6" min="-2" pref="113" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="btn_Mesa7" min="-2" pref="113" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn_Mesa8" min="-2" pref="113" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn_Mesa9" min="-2" pref="113" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="btn_Mesa10" min="-2" pref="113" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn_Mesa11" min="-2" pref="113" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn_Mesa12" min="-2" pref="113" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -106,20 +90,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn_Mesa4" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
                       <Component id="btn_Mesa5" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
-                      <Component id="btn_Mesa6" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_Mesa7" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
-                      <Component id="btn_Mesa8" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
-                      <Component id="btn_Mesa9" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_Mesa10" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
-                      <Component id="btn_Mesa11" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
-                      <Component id="btn_Mesa12" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -127,7 +99,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btn_Mesa1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 1"/>
+            <Property name="text" type="java.lang.String" value="Mesa"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa1ActionPerformed"/>
@@ -135,7 +107,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_Mesa2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 2"/>
+            <Property name="text" type="java.lang.String" value="Mesa"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa2ActionPerformed"/>
@@ -143,7 +115,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_Mesa3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 3"/>
+            <Property name="text" type="java.lang.String" value="Mesa"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa3ActionPerformed"/>
@@ -151,7 +123,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_Mesa4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 4"/>
+            <Property name="text" type="java.lang.String" value="Mesa"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa4ActionPerformed"/>
@@ -159,66 +131,10 @@
         </Component>
         <Component class="javax.swing.JButton" name="btn_Mesa5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 5"/>
+            <Property name="text" type="java.lang.String" value="Mesa"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa5ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_Mesa6">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 6"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa6ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_Mesa7">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 7"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa7ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_Mesa8">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 8"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa8ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_Mesa9">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 9"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa9ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_Mesa10">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 10"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa10ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_Mesa11">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 11"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa11ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_Mesa12">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Mesa 12"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_Mesa12ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
