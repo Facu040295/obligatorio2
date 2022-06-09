@@ -41,8 +41,8 @@ public class Fachada extends Observable {
         return sUnidadesProcesadoras.getUnidades();
     }
     
-     public void agregarMesa(int numero, String m) {
-        sUsuarios.agregarMesa(numero, m);
+     public void agregarMesa(int numero, String m, boolean ocupado) {
+        sUsuarios.agregarMesa(numero, m, ocupado);
     }
     
     public void logout(Sesion s) {
