@@ -24,8 +24,6 @@ public class ControladorUnidadesProcesadoras {
         this.IvistaUnidadesProcesadoras = vista;
     }
     
-    
-    
     public void listarUnidades(){
         IvistaUnidadesProcesadoras.mostrarUnidades(fachada.getUnidadesProcesadoras());
     }
