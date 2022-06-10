@@ -44,6 +44,15 @@ public class SistemaUnidadesProcesadoras {
         }
         return pedidos;
     }
+
+    void agregarProducto(int codigo, String nombre, float precioUnitario, int stock, UnidadProcesadora unidadProcesadora) {
+        Producto producto = new Producto(codigo, nombre, precioUnitario, stock, unidadProcesadora);
+        for(UnidadProcesadora unidad : unidadesProcesadoras){
+            if(unidad == unidadProcesadora){
+                unidad.setProducto(producto);
+            }
+        }
+    }
     
     
 }

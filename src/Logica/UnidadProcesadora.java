@@ -27,16 +27,16 @@ public class UnidadProcesadora {
         return pedidos;
     }
 
-    public void setPedidos(ArrayList<Pedido> pedidos) {
-        this.pedidos = pedidos;
+    public void setPedido(Pedido pedido) {
+        pedidos.add(pedido);
     }
 
     public ArrayList<Producto> getProductos() {
         return productos;
     }
 
-    public void setProductos(ArrayList<Producto> productos) {
-        this.productos = productos;
+    public void setProducto(Producto producto) {
+        productos.add(producto);
     }
     
 }

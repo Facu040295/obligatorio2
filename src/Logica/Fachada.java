@@ -37,15 +37,20 @@ public class Fachada extends Observable {
         sUnidadesProcesadoras.agregarUnidadProcesadora(n);
     }
 
-    public ArrayList<UnidadProcesadora> getUnidadesProcesadoras() {
+    public ArrayList<UnidadProcesadora> getUnidades() {
         return sUnidadesProcesadoras.getUnidades();
     }
     
-     public void agregarMesa(int numero, String m, boolean ocupado) {
+    public void agregarMesa(int numero, String m, boolean ocupado) {
         sUsuarios.agregarMesa(numero, m, ocupado);
+    }
+    
+    public void agregarProducto(int codigo, String nombre, float precioUnitario, int stock, UnidadProcesadora unidadProcesadora){
+        sUnidadesProcesadoras.agregarProducto(codigo, nombre, precioUnitario, stock, unidadProcesadora);
     }
     
     public void logout(Sesion s) {
         sUsuarios.logout(s);
     }
+
 }

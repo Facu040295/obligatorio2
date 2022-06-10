@@ -32,7 +32,7 @@ public class ControladorUnidadesProcesadoras implements Observador {
     }
     
     public void listarUnidades(){
-        IvistaUnidadesProcesadoras.mostrarUnidades(fachada.getUnidadesProcesadoras());
+        IvistaUnidadesProcesadoras.mostrarUnidades(fachada.getUnidades());
     }
 
     public void logout() {

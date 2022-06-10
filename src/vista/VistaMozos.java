@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import Logica.Fachada;
 import Logica.MesasException;
+import Logica.Producto;
 import Logica.Sesion;
 import controlador.ControladorLogin;
 import java.util.logging.Level;
@@ -34,6 +35,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         cargarBotones();
         cargarGenerales(m);
         mostrarMesasAsignadas(controlador.getMesasAsignadas());
+        listarProductos(controlador.getProductos());
     }
 
     @SuppressWarnings("unchecked")
@@ -49,15 +51,15 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         lb_nombreMozo = new javax.swing.JLabel();
         lbl_MesaSeleccionada = new javax.swing.JLabel();
         btn_AbrirMesa = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_CerrarMesa = new javax.swing.JButton();
+        btn_TransferirMesa = new javax.swing.JButton();
+        btn_NuevoPedido = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
-        jButton4 = new javax.swing.JButton();
+        cmb_Productos = new javax.swing.JComboBox<>();
+        txt_Descripcion = new javax.swing.JTextField();
+        int_Cantidad = new javax.swing.JSpinner();
+        btn_AgregarPedido = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -147,16 +149,16 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
             }
         });
 
-        jButton1.setText("Cerrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_CerrarMesa.setText("Cerrar");
+        btn_CerrarMesa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_CerrarMesaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Transferir");
+        btn_TransferirMesa.setText("Transferir");
 
-        jButton3.setText("Nuevo Pedido");
+        btn_NuevoPedido.setText("Nuevo Pedido");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -183,11 +185,16 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         });
         jScrollPane2.setViewportView(jTable2);
 
-        jButton4.setText("Agregar");
+        btn_AgregarPedido.setText("Agregar");
+        btn_AgregarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AgregarPedidoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Productos");
 
-        jLabel2.setText("Comentarios");
+        jLabel2.setText("Descripción");
 
         jLabel3.setText("Cantidad");
 
@@ -209,12 +216,12 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmb_Productos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txt_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jSpinner1)
+                                    .addComponent(int_Cantidad)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,18 +230,18 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                                     .addComponent(lb_nombreMozo, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
                                     .addComponent(lbl_MesaSeleccionada, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_AgregarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btn_AbrirMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(btn_TransferirMesa, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                                    .addComponent(btn_CerrarMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_NuevoPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_AbrirMesa, jButton1, jButton2, lb_nombreMozo, lbl_MesaSeleccionada});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_AbrirMesa, btn_CerrarMesa, btn_TransferirMesa, lb_nombreMozo, lbl_MesaSeleccionada});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,11 +255,11 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_AbrirMesa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(btn_CerrarMesa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(btn_TransferirMesa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
+                        .addComponent(btn_NuevoPedido))
                     .addComponent(Panel_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -261,16 +268,16 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(cmb_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(int_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_AgregarPedido))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox1, jSpinner1, jTextField1});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmb_Productos, int_Cantidad, txt_Descripcion});
 
         setBounds(0, 0, 653, 434);
     }// </editor-fold>//GEN-END:initComponents
@@ -311,40 +318,51 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     }//GEN-LAST:event_btn_Mesa4ActionPerformed
 
     private void btn_AbrirMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AbrirMesaActionPerformed
-        AbrirMesa(mesaSeleccionada);   
+        abrirMesa(mesaSeleccionada);   
     }//GEN-LAST:event_btn_AbrirMesaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_CerrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CerrarMesaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_CerrarMesaActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         logout();
     }//GEN-LAST:event_formWindowClosed
 
+    private void btn_AgregarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarPedidoActionPerformed
+        Mesa m = mesaSeleccionada;
+        Producto p = controlador.getProductos().get(cmb_Productos.getSelectedIndex());
+        String descripcion = txt_Descripcion.getText();
+        int cantidad = (int) int_Cantidad.getValue();
+        
+        agregarPedido(m, p, descripcion, cantidad);
+        
+        JOptionPane.showMessageDialog(this, m.getServicio().getPedidos().get(0).getProducto().getNombre(), "Error", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_btn_AgregarPedidoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel_Mesas;
     private javax.swing.JButton btn_AbrirMesa;
+    private javax.swing.JButton btn_AgregarPedido;
+    private javax.swing.JButton btn_CerrarMesa;
     private javax.swing.JButton btn_Mesa1;
     private javax.swing.JButton btn_Mesa2;
     private javax.swing.JButton btn_Mesa3;
     private javax.swing.JButton btn_Mesa4;
     private javax.swing.JButton btn_Mesa5;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btn_NuevoPedido;
+    private javax.swing.JButton btn_TransferirMesa;
+    private javax.swing.JComboBox<String> cmb_Productos;
+    private javax.swing.JSpinner int_Cantidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lb_nombreMozo;
     private javax.swing.JLabel lbl_MesaSeleccionada;
+    private javax.swing.JTextField txt_Descripcion;
     // End of variables declaration//GEN-END:variables
 
     private void cargarBotones(){
@@ -391,11 +409,26 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     }
 
     @Override
-    public void AbrirMesa(Mesa m){
+    public void abrirMesa(Mesa m){
         try {
             controlador.abrirMesa(m);
         } catch (MesasException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    @Override
+    public void listarProductos(ArrayList<Producto> productos) {
+        for(Producto producto : productos){
+            cmb_Productos.addItem(producto.getNombre());
+        }
+    }
+
+    @Override
+    public void agregarPedido(Mesa m, Producto p, String descripcion, int cantidad) {
+        try {
+            controlador.AgregarPedido(m, p, descripcion, cantidad);
+        } catch (Exception e) {
         }
     }
 

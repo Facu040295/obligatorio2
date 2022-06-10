@@ -5,13 +5,11 @@ import java.util.ArrayList;
 public class Servicio {
     private Mesa mesa;
     private ArrayList<Pedido> pedidos;
-    private ArrayList<Producto> productos;
     private float montoTotal;
 
-    public Servicio(Mesa mesa, ArrayList<Pedido> pedidos, ArrayList<Producto> productos, float montoTotal) {
+    public Servicio(Mesa mesa, ArrayList<Pedido> pedidos, float montoTotal) {
         this.mesa = mesa;
         this.pedidos = pedidos;
-        this.productos = productos;
         this.montoTotal = montoTotal;
     }
 
@@ -27,16 +25,8 @@ public class Servicio {
         return pedidos;
     }
 
-    public void setPedidos(ArrayList<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
-    public ArrayList<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(ArrayList<Producto> productos) {
-        this.productos = productos;
+    public void setPedido(Pedido pedido) {
+        pedidos.add(pedido);
     }
 
     public float getMontoTotal() {
@@ -46,6 +36,5 @@ public class Servicio {
     public void setMontoTotal(float montoTotal) {
         this.montoTotal = montoTotal;
     }
-    
     
 }
