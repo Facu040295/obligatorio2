@@ -2,6 +2,7 @@ package controlador;
 
 import Logica.Fachada;
 import Logica.Mesa;
+import Logica.MesasException;
 import Logica.Mozo;
 import Logica.Servicio;
 import Observador.Observable;
@@ -18,10 +19,11 @@ public class ControladorMesas implements Observador {
     Sesion sesion;
     IvistaMesas vista;
     
-    public ControladorMesas(Mozo m, IvistaMesas v) {
+    public ControladorMesas(Sesion s, IvistaMesas v) {
         fachada = Fachada.getInstancia();
-        mozo = m;
+        sesion = s;
         vista = v;
+        mozo = s.getUsuarioMozo();
     }
     
     public ArrayList<Mesa> getMesasAsignadas(){
@@ -29,7 +31,7 @@ public class ControladorMesas implements Observador {
     }
     
     public void MesasAsignadas() {
-        vista.mostrarMesasAsignadas(mozo.getMesasAsignadas());
+        vista.mostrarMesasAsignadas(getMesasAsignadas());
     }
     
     public void logout() {
@@ -37,9 +39,13 @@ public class ControladorMesas implements Observador {
        fachada.quitar(this);
     }
     
-    public void abrirMesa(Mesa m) {
+    public void abrirMesa(Mesa m) throws MesasException{
+        if (m.getServicio() != null || m.isOcupado()){
+            throw new MesasException("La mesa ya está abierta");
+        }
         Servicio s = new Servicio(m, null, null, 0);
         m.setServicio(s);
+        m.setOcupado(true);
     }
     
     @Override

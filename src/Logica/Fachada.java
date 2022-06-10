@@ -25,11 +25,11 @@ public class Fachada extends Observable {
         sUsuarios.agregarUsuarioGestor(n, p, nc);
     }
     
-    public Mozo loginMozo(String u, String p) throws UsuarioException {
+    public Sesion loginMozo(String u, String p) throws UsuarioException {
         return sUsuarios.loginMozo(u, p);
     }
 
-    public Gestor loginGestor(String nom, String pwd) throws UsuarioException {
+    public Sesion loginGestor(String nom, String pwd) throws UsuarioException {
         return sUsuarios.loginGestor(nom, pwd);
     }
     

@@ -41,7 +41,7 @@ class SistemaUsuarios {
         return true;
     }
     
-    public Mozo loginMozo(String u, String p) throws UsuarioException {
+    public Sesion loginMozo(String u, String p) throws UsuarioException {
         Sesion s = null;
         Usuario usuarioMozo = (Mozo) login(u, p, usuariosMozo);
         if (usuarioMozo == null) {
@@ -53,10 +53,10 @@ class SistemaUsuarios {
             throw new UsuarioException("Ud. ya está logueado");
         }
         usuariosIngresados.add(s);
-        return m;
+        return s;
     }
 
-    public Gestor loginGestor(String nom, String pwd) throws UsuarioException {
+    public Sesion loginGestor(String nom, String pwd) throws UsuarioException {
         Sesion s = null;
         Usuario u = (Gestor) login(nom, pwd, usuariosGestor);
         if (u == null) {
@@ -68,7 +68,7 @@ class SistemaUsuarios {
             throw new UsuarioException("Ud. ya está logueado");
         }
         usuariosIngresados.add(s);
-        return g;
+        return s;
     }
     
     private Usuario login(String nom, String pwd, ArrayList usuarios) {

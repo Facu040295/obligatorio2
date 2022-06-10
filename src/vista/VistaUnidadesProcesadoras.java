@@ -5,6 +5,7 @@
 package vista;
 
 import Logica.Gestor;
+import Logica.Sesion;
 import Logica.UnidadProcesadora;
 import controlador.ControladorUnidadesProcesadoras;
 import controlador.IvistaUnidadesProcesadoras;
@@ -16,14 +17,15 @@ import java.util.ArrayList;
  */
 public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements IvistaUnidadesProcesadoras{
 
-    ControladorUnidadesProcesadoras controlador = new ControladorUnidadesProcesadoras(this);
+    ControladorUnidadesProcesadoras controlador;
     /**
      * Creates new form VistaUnidadesProcesadoras
      */
-    public VistaUnidadesProcesadoras(java.awt.Frame parent, boolean modal, Gestor g){
+    public VistaUnidadesProcesadoras(java.awt.Frame parent, boolean modal, Sesion s){
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        this.controlador = new ControladorUnidadesProcesadoras(this, s);
         controlador.listarUnidades();
     }
 
@@ -101,7 +103,7 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements Iv
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        
+        logout();
     }//GEN-LAST:event_formWindowClosed
 
     /**
@@ -120,5 +122,9 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements Iv
         for(UnidadProcesadora u : unidades){
             jComboBox1.addItem(u.getNombre());
         }
+    }
+
+    private void logout() {
+        controlador.logout();
     }
 }

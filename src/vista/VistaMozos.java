@@ -8,8 +8,11 @@ import controlador.IvistaMesas;
 import java.awt.Color;
 import java.util.ArrayList;
 import Logica.Fachada;
+import Logica.MesasException;
 import Logica.Sesion;
 import controlador.ControladorLogin;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import jdk.jshell.spi.ExecutionControl;
@@ -22,14 +25,15 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
   
     //private ControladorLogin controladorLog;
 
-    public VistaMozos(java.awt.Frame parent, boolean modal, Mozo m) {
+    public VistaMozos(java.awt.Frame parent, boolean modal, Sesion sesion) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        this.controlador = new ControladorMesas(m, this);
+        this.controlador = new ControladorMesas(sesion, this);
+        Mozo m = sesion.getUsuarioMozo();
         cargarBotones();
         cargarGenerales(m);
-        mostrarMesasAsignadas(m.getMesasAsignadas());
+        mostrarMesasAsignadas(controlador.getMesasAsignadas());
     }
 
     @SuppressWarnings("unchecked")
@@ -59,6 +63,11 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         btn_Mesa1.setText("Mesa");
         btn_Mesa1.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +267,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox1, jSpinner1, jTextField1});
@@ -302,15 +311,16 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     }//GEN-LAST:event_btn_Mesa4ActionPerformed
 
     private void btn_AbrirMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AbrirMesaActionPerformed
-        controlador.abrirMesa(mesaSeleccionada);
-        
-        JOptionPane.showMessageDialog(this, "Mesa : " + mesaSeleccionada.getNumero() + " Servicio: " + mesaSeleccionada.getServicio().getMesa().getNumero(), "Error", JOptionPane.ERROR_MESSAGE);
-        
+        AbrirMesa(mesaSeleccionada);   
     }//GEN-LAST:event_btn_AbrirMesaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        logout();
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -377,6 +387,15 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
             }
             
             contador ++;
+        }
+    }
+
+    @Override
+    public void AbrirMesa(Mesa m){
+        try {
+            controlador.abrirMesa(m);
+        } catch (MesasException ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }
 

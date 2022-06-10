@@ -1,8 +1,7 @@
 package controlador;
 
 import Logica.Fachada;
-import Logica.Gestor;
-import Logica.Mozo;
+import Logica.Sesion;
 import Logica.UsuarioException;
 
 public class ControladorLogin {
@@ -15,12 +14,12 @@ public class ControladorLogin {
     }
 
     public void loginMozo(String nom, String pwd) throws UsuarioException{
-        Mozo m = fachada.loginMozo(nom, pwd);
-        interfase.ejecutarProximoCasoUso(m);
+        Sesion s = fachada.loginMozo(nom, pwd);
+        interfase.ejecutarProximoCasoUso(s);
     }
 
     public void loginGestor(String nom, String pwd) throws UsuarioException{
-        Gestor g = fachada.loginGestor(nom, pwd);
-        interfase.ejecutarProximoCasoUso(g);
+        Sesion s = fachada.loginGestor(nom, pwd);
+        interfase.ejecutarProximoCasoUso(s);
     }
 }

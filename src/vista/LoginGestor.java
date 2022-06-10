@@ -5,6 +5,7 @@
 package vista;
 
 import Logica.Gestor;
+import Logica.Sesion;
 import Logica.UnidadProcesadora;
 import controlador.ControladorLogin;
 import java.awt.Frame;
@@ -36,7 +37,7 @@ public class LoginGestor extends LoginAbstracto{
 
     @Override
     public void ejecutarProximoCasoUso(Object dato) {
-        new VistaUnidadesProcesadoras(null, false, (Gestor) dato).setVisible(true);
+        new VistaUnidadesProcesadoras(null, false, (Sesion) dato).setVisible(true);
     }
     
 }
