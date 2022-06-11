@@ -184,7 +184,7 @@ public class DialogNuevoPedido extends javax.swing.JDialog {
         try {
             controladorPedidos.AgregarPedido(m, p, descripcion, cantidad);
             JOptionPane.showMessageDialog(null, "Se ha agregado el pedido");
-            dispose();
+            listarPedidos();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
         }
