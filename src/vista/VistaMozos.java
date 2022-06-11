@@ -7,16 +7,10 @@ import controlador.ControladorMesas;
 import controlador.IvistaMesas;
 import java.awt.Color;
 import java.util.ArrayList;
-import Logica.Fachada;
 import Logica.MesasException;
-import Logica.Producto;
 import Logica.Sesion;
-import controlador.ControladorLogin;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import jdk.jshell.spi.ExecutionControl;
 
 public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
 
@@ -348,16 +342,17 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     }//GEN-LAST:event_formWindowClosed
 
     private void btn_AgregarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarPedidoActionPerformed
-        Mesa m = mesaSeleccionada;
+        /*Mesa m = mesaSeleccionada;
         Producto p = controlador.getProductos().get(cmb_Productos.getSelectedIndex());
         String descripcion = txt_Descripcion.getText();
         int cantidad = (int) int_Cantidad.getValue();
-        agregarPedido(m, p, descripcion, cantidad);
+        agregarPedido(m, p, descripcion, cantidad);*/
     }//GEN-LAST:event_btn_AgregarPedidoActionPerformed
 
     private void btn_NuevoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NuevoPedidoActionPerformed
-        listarProductos(controlador.getProductos());
-        pnl_Pedido.setVisible(true);
+        /*listarProductos(controlador.getProductos());
+        pnl_Pedido.setVisible(true);*/
+        new DialogNuevoPedido(null, false, mesaSeleccionada, controlador).setVisible(true);
     }//GEN-LAST:event_btn_NuevoPedidoActionPerformed
 
 
@@ -445,12 +440,14 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     public void abrirMesa(Mesa m){
         try {
             controlador.abrirMesa(m);
+            mostrarMesasAsignadas(controlador.getMesasAsignadas());
+            JOptionPane.showMessageDialog(null, "La mesa se abrió correctamente");      
         } catch (MesasException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+            JOptionPane.showMessageDialog(this, ex.getMessage(), null, JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    @Override
+    /*@Override
     public void listarProductos(ArrayList<Producto> productos) {
         for(Producto producto : productos){
             cmb_Productos.addItem(producto.getNombre());
@@ -462,8 +459,8 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         try {
             controlador.AgregarPedido(m, p, descripcion, cantidad);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
         }
-    }
+    }*/
 
 }

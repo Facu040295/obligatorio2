@@ -98,10 +98,10 @@ class SistemaUsuarios {
         usuariosIngresados.remove(s);
     }
 
-    public void agregarMesa(int numero, String m, boolean ocupado) {      
+    public void agregarMesa(int numero, String m) {      
       for (Mozo mozo : usuariosMozo) {
         if (mozo.getUser().equals(m) && mozo.getMesasAsignadas().size() < 5) {
-            Mesa mesa = new Mesa(numero, mozo, ocupado);
+            Mesa mesa = new Mesa(numero, mozo);
             mozo.getMesasAsignadas().add(mesa);
         }
       }

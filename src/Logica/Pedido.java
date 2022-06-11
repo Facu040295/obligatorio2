@@ -32,15 +32,21 @@ public class Pedido {
     }
 
     public String getDescripcion() {
-        return descripcion;
+        if(descripcion.isEmpty())
+            return "No se encuentra descripción para el pedido";
+        else
+            return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public boolean isProcesado() {
-        return procesado;
+    public String Procesado() {
+        if(procesado == true){
+            return "El pedido se encuentra procesado";
+        }
+        return "El pedido aún no fue procesado";
     }
 
     public void setProcesado(boolean procesado) {

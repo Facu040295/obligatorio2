@@ -32,19 +32,19 @@ public class DatosPrueba {
         fachada.agregarUnidadProcesadora("Barra de Sushi");
 
         //---- Mesas ----------------------
-        fachada.agregarMesa(1,"a",false);
-        fachada.agregarMesa(3,"a",true);
-        fachada.agregarMesa(4,"a",true);
-        fachada.agregarMesa(10,"a",false);
-        fachada.agregarMesa(12,"a",false);
-        fachada.agregarMesa(2,"a",true);
+        fachada.agregarMesa(1,"a");
+        fachada.agregarMesa(3,"a");
+        fachada.agregarMesa(4,"a");
+        fachada.agregarMesa(10,"a");
+        fachada.agregarMesa(12,"a");
+        fachada.agregarMesa(2,"a");
         
-        fachada.agregarMesa(2,"b",true);
-        fachada.agregarMesa(5,"b",false);
-        fachada.agregarMesa(6,"b",true);
-        fachada.agregarMesa(7,"b",false);
-        fachada.agregarMesa(8,"b",true);
-        fachada.agregarMesa(9,"b",true);
+        fachada.agregarMesa(2,"b");
+        fachada.agregarMesa(5,"b");
+        fachada.agregarMesa(6,"b");
+        fachada.agregarMesa(7,"b");
+        fachada.agregarMesa(8,"b");
+        fachada.agregarMesa(9,"b");
         
         //---- Productos ----------------------
         fachada.agregarProducto(1,"Napolitana",380,30,fachada.getUnidades().get(0));

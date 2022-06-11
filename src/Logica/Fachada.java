@@ -10,6 +10,8 @@ public class Fachada extends Observable {
     
     private static Fachada instancia = new Fachada();
     
+    public enum Eventos{abrirMesa};
+    
     public static Fachada getInstancia() {
         return instancia;
     }
@@ -41,8 +43,8 @@ public class Fachada extends Observable {
         return sUnidadesProcesadoras.getUnidades();
     }
     
-    public void agregarMesa(int numero, String m, boolean ocupado) {
-        sUsuarios.agregarMesa(numero, m, ocupado);
+    public void agregarMesa(int numero, String m) {
+        sUsuarios.agregarMesa(numero, m);
     }
     
     public void agregarProducto(int codigo, String nombre, float precioUnitario, int stock, UnidadProcesadora unidadProcesadora){

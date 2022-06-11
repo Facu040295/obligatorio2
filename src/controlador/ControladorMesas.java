@@ -50,12 +50,6 @@ public class ControladorMesas implements Observador {
         m.setServicio(s);
         m.setOcupado(true);
     }
-    
-    @Override
-    public void actualizar(Object evento, Observable origen) {
-        //if (evento.equals(mozo.Eventos.actualizarMesas)) {
-
-    }
 
     public ArrayList<Producto> getProductos() {
         ArrayList<UnidadProcesadora> unidades = fachada.getUnidades();
@@ -70,9 +64,9 @@ public class ControladorMesas implements Observador {
         return productos;
     }
     
-    public void ListarProductos(){
+    /*public void ListarProductos(){
         vista.listarProductos(getProductos());
-    }
+    }*/
     
     public void AgregarPedido(Mesa m, Producto p, String descripcion, int cantidad) throws MesasException{
         if (!m.isOcupado()){
@@ -85,8 +79,16 @@ public class ControladorMesas implements Observador {
             throw new MesasException("Sin stock, solo quedan " + cantidad);
         }*/
         Servicio s = m.getServicio();
-        Pedido pedido = new Pedido(p, cantidad, descripcion, true, null);
+        Pedido pedido = new Pedido(p, cantidad, descripcion, false, null);
         s.getPedidos().add(pedido);
     }
 
+        
+    @Override
+    public void actualizar(Object evento, Observable origen) {
+        if(evento.equals(Fachada.Eventos.abrirMesa)){
+            MesasAsignadas();
+        }
+
+    }
 }

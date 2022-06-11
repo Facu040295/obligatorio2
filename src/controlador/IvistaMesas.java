@@ -9,7 +9,7 @@ public interface IvistaMesas {
     
     public void abrirMesa(Mesa m);
 
-    public void listarProductos(ArrayList<Producto> productos);
+    //public void listarProductos(ArrayList<Producto> productos);
     
-    public void agregarPedido(Mesa m, Producto p, String descripcion, int cantidad);
+    //public void agregarPedido(Mesa m, Producto p, String descripcion, int cantidad);
 }

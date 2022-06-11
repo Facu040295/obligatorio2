@@ -6,10 +6,10 @@ public class Mesa {
     private Servicio servicio;
     private boolean ocupado;
     
-    public Mesa(int numero, Mozo mozoAsignado, boolean ocupado) {
+    public Mesa(int numero, Mozo mozoAsignado) {
         this.numero = numero;
         this.mozoAsignado = mozoAsignado;
-        this.ocupado = ocupado;
+        this.ocupado = false;
     }
 
     public int getNumero() {
