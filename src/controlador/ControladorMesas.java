@@ -74,10 +74,19 @@ public class ControladorMesas implements Observador {
         vista.listarProductos(getProductos());
     }
     
-    public void AgregarPedido(Mesa m, Producto p, String descripcion, int cantidad){
+    public void AgregarPedido(Mesa m, Producto p, String descripcion, int cantidad) throws MesasException{
+        if (!m.isOcupado()){
+            throw new MesasException("La mesa está cerrada");
+        }
+        if (cantidad < 1){
+            throw new MesasException("Cantidad inválida");
+        }
+        /*if (supera cantidad en stock){
+            throw new MesasException("Sin stock, solo quedan " + cantidad);
+        }*/
         Servicio s = m.getServicio();
         Pedido pedido = new Pedido(p, cantidad, descripcion, true, null);
-        s.setPedido(pedido);
+        s.getPedidos().add(pedido);
     }
 
 }

@@ -9,7 +9,7 @@ public class Servicio {
 
     public Servicio(Mesa mesa, ArrayList<Pedido> pedidos, float montoTotal) {
         this.mesa = mesa;
-        this.pedidos = pedidos;
+        this.pedidos = new ArrayList<Pedido>();
         this.montoTotal = montoTotal;
     }
 
@@ -23,10 +23,6 @@ public class Servicio {
     
     public ArrayList<Pedido> getPedidos() {
         return pedidos;
-    }
-
-    public void setPedido(Pedido pedido) {
-        pedidos.add(pedido);
     }
 
     public float getMontoTotal() {
