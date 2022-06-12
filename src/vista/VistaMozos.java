@@ -8,6 +8,8 @@ import controlador.IvistaMesas;
 import java.awt.Color;
 import java.util.ArrayList;
 import Logica.MesasException;
+import Logica.Pedido;
+import Logica.Producto;
 import Logica.Sesion;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -35,7 +37,10 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Panel_Mesas = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Lst_Pedidos = new javax.swing.JList();
+        jLabel4 = new javax.swing.JLabel();
+        pnl_Mesas = new javax.swing.JPanel();
         btn_Mesa1 = new javax.swing.JButton();
         btn_Mesa2 = new javax.swing.JButton();
         btn_Mesa4 = new javax.swing.JButton();
@@ -48,9 +53,35 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         btn_TransferirMesa = new javax.swing.JButton();
         btn_NuevoPedido = new javax.swing.JButton();
         pnl_Pedido = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        pnl_NuevoPedido = new javax.swing.JPanel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        cmb_Productos = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        txt_Descripcion = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        int_Cantidad = new javax.swing.JSpinner();
+        btn_AgregarPedido = new javax.swing.JButton();
+        btn_CancelarPedido = new javax.swing.JButton();
+        pnl_Servicio = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lst_PedidosServicio = new javax.swing.JList();
+        jLabel5 = new javax.swing.JLabel();
+        lbl_Total = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+
+        Lst_Pedidos.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "No se encuentran pedidos" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(Lst_Pedidos);
+
+        jLabel4.setText("Nombre Producto - Cantidad - Descripción - Procesado");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(650, 480));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -92,33 +123,34 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
             }
         });
 
-        javax.swing.GroupLayout Panel_MesasLayout = new javax.swing.GroupLayout(Panel_Mesas);
-        Panel_Mesas.setLayout(Panel_MesasLayout);
-        Panel_MesasLayout.setHorizontalGroup(
-            Panel_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_MesasLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnl_MesasLayout = new javax.swing.GroupLayout(pnl_Mesas);
+        pnl_Mesas.setLayout(pnl_MesasLayout);
+        pnl_MesasLayout.setHorizontalGroup(
+            pnl_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_MesasLayout.createSequentialGroup()
                 .addComponent(btn_Mesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_Mesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_Mesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(Panel_MesasLayout.createSequentialGroup()
+            .addGroup(pnl_MesasLayout.createSequentialGroup()
                 .addComponent(btn_Mesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_Mesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        Panel_MesasLayout.setVerticalGroup(
-            Panel_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel_MesasLayout.createSequentialGroup()
+        pnl_MesasLayout.setVerticalGroup(
+            pnl_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_MesasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Panel_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnl_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Mesa2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Mesa1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Mesa3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Panel_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_MesasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Mesa4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_Mesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_Mesa5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 16, Short.MAX_VALUE))
         );
 
         lb_nombreMozo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -159,7 +191,136 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         );
         pnl_PedidoLayout.setVerticalGroup(
             pnl_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 249, Short.MAX_VALUE)
+            .addGap(0, 271, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 65, Short.MAX_VALUE)
+        );
+
+        jLabel1.setText("Productos");
+
+        cmb_Productos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_ProductosActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Descripción");
+
+        jLabel3.setText("Cantidad");
+
+        btn_AgregarPedido.setText("Agregar pedido");
+        btn_AgregarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AgregarPedidoActionPerformed(evt);
+            }
+        });
+
+        btn_CancelarPedido.setText("Cancelar");
+        btn_CancelarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CancelarPedidoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnl_NuevoPedidoLayout = new javax.swing.GroupLayout(pnl_NuevoPedido);
+        pnl_NuevoPedido.setLayout(pnl_NuevoPedidoLayout);
+        pnl_NuevoPedidoLayout.setHorizontalGroup(
+            pnl_NuevoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_NuevoPedidoLayout.createSequentialGroup()
+                .addGroup(pnl_NuevoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnl_NuevoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_NuevoPedidoLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnl_NuevoPedidoLayout.createSequentialGroup()
+                        .addComponent(txt_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(pnl_NuevoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(pnl_NuevoPedidoLayout.createSequentialGroup()
+                        .addComponent(int_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addComponent(btn_AgregarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_CancelarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addComponent(jSeparator2)
+        );
+        pnl_NuevoPedidoLayout.setVerticalGroup(
+            pnl_NuevoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_NuevoPedidoLayout.createSequentialGroup()
+                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
+                .addGroup(pnl_NuevoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnl_NuevoPedidoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnl_NuevoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnl_NuevoPedidoLayout.createSequentialGroup()
+                                .addGroup(pnl_NuevoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnl_NuevoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cmb_Productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnl_NuevoPedidoLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(int_Cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pnl_NuevoPedidoLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(pnl_NuevoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_AgregarPedido)
+                            .addComponent(btn_CancelarPedido))))
+                .addGap(3, 3, 3))
+        );
+
+        lst_PedidosServicio.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "No se encuentran pedidos" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(lst_PedidosServicio);
+
+        jLabel5.setText("Nombre Producto - Cantidad - Precio por unidad - Sub-Total");
+
+        lbl_Total.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbl_Total.setText("Total del servicio: $0");
+
+        javax.swing.GroupLayout pnl_ServicioLayout = new javax.swing.GroupLayout(pnl_Servicio);
+        pnl_Servicio.setLayout(pnl_ServicioLayout);
+        pnl_ServicioLayout.setHorizontalGroup(
+            pnl_ServicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(pnl_ServicioLayout.createSequentialGroup()
+                .addComponent(lbl_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(341, 341, 341))
+            .addGroup(pnl_ServicioLayout.createSequentialGroup()
+                .addComponent(jSeparator3)
+                .addContainerGap())
+        );
+        pnl_ServicioLayout.setVerticalGroup(
+            pnl_ServicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_ServicioLayout.createSequentialGroup()
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -167,10 +328,10 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Panel_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnl_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -185,9 +346,12 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                                     .addComponent(btn_TransferirMesa, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                                     .addComponent(btn_CerrarMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btn_NuevoPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addComponent(pnl_Pedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator1))
-                .addContainerGap())
+                    .addComponent(pnl_NuevoPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnl_Servicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnl_Pedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_AbrirMesa, btn_CerrarMesa, btn_TransferirMesa, lb_nombreMozo, lbl_MesaSeleccionada});
@@ -209,26 +373,32 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                         .addComponent(btn_TransferirMesa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_NuevoPedido))
-                    .addComponent(Panel_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnl_Mesas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnl_NuevoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnl_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnl_Servicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        setBounds(0, 0, 653, 488);
+        setBounds(0, 0, 666, 519);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_Mesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa1ActionPerformed
         lbl_MesaSeleccionada.setText("Se ha seleccionado la " + btn_Mesa1.getText());
         mesaSeleccionada = controlador.getMesasAsignadas().get(0);
         mostrarEventosMesa();
+        mostrarServicio();
     }//GEN-LAST:event_btn_Mesa1ActionPerformed
 
     private void btn_Mesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa2ActionPerformed
         lbl_MesaSeleccionada.setText("Se ha seleccionado la " + btn_Mesa2.getText());
         mesaSeleccionada = controlador.getMesasAsignadas().get(1);
         mostrarEventosMesa();
+        mostrarServicio();
     }//GEN-LAST:event_btn_Mesa2ActionPerformed
 
     private void btn_Mesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa5ActionPerformed
@@ -241,12 +411,14 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         lbl_MesaSeleccionada.setText("Se ha seleccionado la " + btn_Mesa3.getText());
         mesaSeleccionada = controlador.getMesasAsignadas().get(2);
         mostrarEventosMesa();
+        mostrarServicio();
     }//GEN-LAST:event_btn_Mesa3ActionPerformed
 
     private void btn_Mesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa4ActionPerformed
         lbl_MesaSeleccionada.setText("Se ha seleccionado la " + btn_Mesa4.getText());
         mesaSeleccionada = controlador.getMesasAsignadas().get(3);
         mostrarEventosMesa();
+        mostrarServicio();
     }//GEN-LAST:event_btn_Mesa4ActionPerformed
 
     private void btn_AbrirMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AbrirMesaActionPerformed
@@ -262,15 +434,38 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     }//GEN-LAST:event_formWindowClosed
 
     private void btn_NuevoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NuevoPedidoActionPerformed
-        /*listarProductos(controlador.getProductos());
-        pnl_Pedido.setVisible(true);*/
-        new DialogNuevoPedido(null, false, mesaSeleccionada, controlador).setVisible(true);
+        listarProductos(controlador.getProductos());
+        txt_Descripcion.setText("");
+        int_Cantidad.setValue(0);
+        cmb_Productos.setSelectedIndex(0);
+        pnl_NuevoPedido.setVisible(true);
     }//GEN-LAST:event_btn_NuevoPedidoActionPerformed
+
+    private void btn_AgregarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarPedidoActionPerformed
+        Producto p = controlador.getProductos().get(cmb_Productos.getSelectedIndex());
+        String descripcion = txt_Descripcion.getText();
+        int cantidad = (int) int_Cantidad.getValue();
+        agregarPedido(mesaSeleccionada, p, descripcion, cantidad);
+        pnl_NuevoPedido.setVisible(false);
+    }//GEN-LAST:event_btn_AgregarPedidoActionPerformed
+
+    private void btn_CancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarPedidoActionPerformed
+        txt_Descripcion.setText("");
+        int_Cantidad.setValue(0);
+        cmb_Productos.setSelectedIndex(0);
+        pnl_NuevoPedido.setVisible(false);
+    }//GEN-LAST:event_btn_CancelarPedidoActionPerformed
+
+    private void cmb_ProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_ProductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_ProductosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Panel_Mesas;
+    private javax.swing.JList Lst_Pedidos;
     private javax.swing.JButton btn_AbrirMesa;
+    private javax.swing.JButton btn_AgregarPedido;
+    private javax.swing.JButton btn_CancelarPedido;
     private javax.swing.JButton btn_CerrarMesa;
     private javax.swing.JButton btn_Mesa1;
     private javax.swing.JButton btn_Mesa2;
@@ -279,10 +474,27 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     private javax.swing.JButton btn_Mesa5;
     private javax.swing.JButton btn_NuevoPedido;
     private javax.swing.JButton btn_TransferirMesa;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JComboBox<String> cmb_Productos;
+    private javax.swing.JSpinner int_Cantidad;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel lb_nombreMozo;
     private javax.swing.JLabel lbl_MesaSeleccionada;
+    private javax.swing.JLabel lbl_Total;
+    private javax.swing.JList lst_PedidosServicio;
+    private javax.swing.JPanel pnl_Mesas;
+    private javax.swing.JPanel pnl_NuevoPedido;
     private javax.swing.JPanel pnl_Pedido;
+    private javax.swing.JPanel pnl_Servicio;
+    private javax.swing.JTextField txt_Descripcion;
     // End of variables declaration//GEN-END:variables
 
     private void cargarBotones(){
@@ -304,16 +516,22 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         btn_CerrarMesa.setVisible(false);
         btn_TransferirMesa.setVisible(false);
         btn_NuevoPedido.setVisible(false);
-        pnl_Pedido.setVisible(false);
+        pnl_NuevoPedido.setVisible(false);
+        pnl_Servicio.setVisible(false);
     }
     
     private void mostrarEventosMesa() {
-        pnl_Pedido.setVisible(false);
+        pnl_NuevoPedido.setVisible(false);
         lbl_MesaSeleccionada.setVisible(true);
         btn_AbrirMesa.setVisible(true);
         btn_CerrarMesa.setVisible(true);
         btn_TransferirMesa.setVisible(true);
         btn_NuevoPedido.setVisible(true);
+        if(mesaSeleccionada.isOcupado()){
+            pnl_Servicio.setVisible(true);
+        }
+        else
+           pnl_Servicio.setVisible(false); 
     }
     
     public void logout() {
@@ -344,16 +562,33 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         try {
             controlador.abrirMesa(m);
             mostrarMesasAsignadas(controlador.getMesasAsignadas());
-            JOptionPane.showMessageDialog(null, "La mesa se abrió correctamente");      
+            JOptionPane.showMessageDialog(null, "La mesa se abrió correctamente");
+            pnl_Servicio.setVisible(true);
         } catch (MesasException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), null, JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    /*@Override
+    @Override
     public void listarProductos(ArrayList<Producto> productos) {
         for(Producto producto : productos){
             cmb_Productos.addItem(producto.getNombre());
+        }
+    }
+    
+    @Override
+    public void mostrarServicio(){
+        if(mesaSeleccionada.isOcupado()){
+            int total = 0;
+            ArrayList<String> listado = new ArrayList();
+            for (Pedido p : mesaSeleccionada.getServicio().getPedidos()) {
+                listado.add(p.getProducto().getNombre() + " - " + p.getCantidad()
+                            + " - " + p.getProducto().getPrecioUnitario() + " - " + 
+                            (p.getProducto().getPrecioUnitario() * p.getCantidad()));
+                total += (p.getProducto().getPrecioUnitario() * p.getCantidad());
+            }
+            lst_PedidosServicio.setListData(listado.toArray());
+            lbl_Total.setText("Total del servicio: $" + total);
         }
     }
 
@@ -361,9 +596,11 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     public void agregarPedido(Mesa m, Producto p, String descripcion, int cantidad) {
         try {
             controlador.AgregarPedido(m, p, descripcion, cantidad);
+            JOptionPane.showMessageDialog(null, "Se ha agregado el pedido");
+            mostrarServicio();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
         }
-    }*/
+    }
 
 }
