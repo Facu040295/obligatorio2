@@ -23,6 +23,10 @@ class SistemaUsuarios {
     }
     return false;
     }
+    
+    public ArrayList getMozos(){
+        return this.usuariosMozo;
+    }
         
     public boolean ValidarUsuario(String n, boolean esMozo) {
         if (esMozo) {

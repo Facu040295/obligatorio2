@@ -70,7 +70,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lb_nombreMozo" linkSize="1" alignment="0" pref="258" max="32767" attributes="0"/>
+                                  <Component id="lbl_nombreMozo" linkSize="1" alignment="0" pref="258" max="32767" attributes="0"/>
                                   <Component id="lbl_MesaSeleccionada" linkSize="1" alignment="0" pref="193" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -102,7 +102,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lb_nombreMozo" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_nombreMozo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lbl_MesaSeleccionada" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -212,10 +212,10 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lb_nombreMozo">
+    <Component class="javax.swing.JLabel" name="lbl_nombreMozo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Times New Roman" size="18" style="1"/>
+          <Font name="Arial Black" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Mozo:"/>

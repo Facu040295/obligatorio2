@@ -8,5 +8,7 @@ public interface IvistaMonitorPedidos {
     public void mostrarPedidosUnidadProcesadora(ArrayList<Pedido> p);
     
     public void mostrarPedidosGestor(ArrayList<Pedido> p);
+
+    public void mostrarTitulo(String titulo);
     
 }

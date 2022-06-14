@@ -38,8 +38,8 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements Iv
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        cmb_Unidades = new javax.swing.JComboBox<>();
+        btn_Seleccionar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -49,16 +49,16 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements Iv
             }
         });
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cmb_Unidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cmb_UnidadesActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Seleccionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_Seleccionar.setText("Seleccionar");
+        btn_Seleccionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_SeleccionarActionPerformed(evt);
             }
         });
 
@@ -74,9 +74,9 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements Iv
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmb_Unidades, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btn_Seleccionar)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -86,21 +86,21 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements Iv
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(cmb_Unidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Seleccionar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btn_SeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SeleccionarActionPerformed
+        mostrarMonitor();
+    }//GEN-LAST:event_btn_SeleccionarActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cmb_UnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_UnidadesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cmb_UnidadesActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         logout();
@@ -112,16 +112,22 @@ public class VistaUnidadesProcesadoras extends javax.swing.JDialog implements Iv
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btn_Seleccionar;
+    private javax.swing.JComboBox<String> cmb_Unidades;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void mostrarUnidades(ArrayList<UnidadProcesadora> unidades) {
         for(UnidadProcesadora u : unidades){
-            jComboBox1.addItem(u.getNombre());
+            cmb_Unidades.addItem(u.getNombre());
         }
+    }
+    
+    public void mostrarMonitor(){
+        Gestor g = controlador.getGestor();
+        UnidadProcesadora u = controlador.getUnidades().get(cmb_Unidades.getSelectedIndex());
+        new VistaMonitorPedidos(null, false, g, u).setVisible(true);
     }
 
     private void logout() {

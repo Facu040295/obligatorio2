@@ -46,7 +46,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         btn_Mesa4 = new javax.swing.JButton();
         btn_Mesa5 = new javax.swing.JButton();
         btn_Mesa3 = new javax.swing.JButton();
-        lb_nombreMozo = new javax.swing.JLabel();
+        lbl_nombreMozo = new javax.swing.JLabel();
         lbl_MesaSeleccionada = new javax.swing.JLabel();
         btn_AbrirMesa = new javax.swing.JButton();
         btn_CerrarMesa = new javax.swing.JButton();
@@ -153,9 +153,9 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                 .addGap(0, 16, Short.MAX_VALUE))
         );
 
-        lb_nombreMozo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        lb_nombreMozo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lb_nombreMozo.setText("Mozo:");
+        lbl_nombreMozo.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        lbl_nombreMozo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_nombreMozo.setText("Mozo:");
 
         lbl_MesaSeleccionada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbl_MesaSeleccionada.setText("Se ha seleccionado la mesa");
@@ -336,7 +336,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lb_nombreMozo, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                                    .addComponent(lbl_nombreMozo, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
                                     .addComponent(lbl_MesaSeleccionada, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -354,7 +354,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                 .addComponent(pnl_Pedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_AbrirMesa, btn_CerrarMesa, btn_TransferirMesa, lb_nombreMozo, lbl_MesaSeleccionada});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_AbrirMesa, btn_CerrarMesa, btn_TransferirMesa, lbl_MesaSeleccionada, lbl_nombreMozo});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +362,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lb_nombreMozo)
+                        .addComponent(lbl_nombreMozo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_MesaSeleccionada)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -486,9 +486,9 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JLabel lb_nombreMozo;
     private javax.swing.JLabel lbl_MesaSeleccionada;
     private javax.swing.JLabel lbl_Total;
+    private javax.swing.JLabel lbl_nombreMozo;
     private javax.swing.JList lst_PedidosServicio;
     private javax.swing.JPanel pnl_Mesas;
     private javax.swing.JPanel pnl_NuevoPedido;
@@ -510,7 +510,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         for (JButton boton : botones) {
             boton.setVisible(false);
         }
-        lb_nombreMozo.setText("Mozo: " + m.getNombreCompleto());
+        lbl_nombreMozo.setText("Mozo: " + m.getNombreCompleto());
         lbl_MesaSeleccionada.setVisible(false);
         btn_AbrirMesa.setVisible(false);
         btn_CerrarMesa.setVisible(false);

@@ -14,6 +14,10 @@ public class LoginMozo extends LoginAbstracto{
         super(parent, modal);
         this.controlador = new ControladorLogin(this);
     }
+    
+    private void ocultarUnidades(){
+        
+    }
 
     @Override
     public String getTitulo() {

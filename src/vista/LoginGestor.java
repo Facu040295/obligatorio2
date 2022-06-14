@@ -27,7 +27,7 @@ public class LoginGestor extends LoginAbstracto{
     
     @Override
     public String getTitulo() {
-        return "UNIDADES EJECUTORAS";
+        return "UNIDADES PROCESADORAS";
     }
 
     @Override
