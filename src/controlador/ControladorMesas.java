@@ -51,6 +51,21 @@ public class ControladorMesas implements Observador {
         m.setOcupado(true);
     }
 
+    public void cerrarMesa(Mesa m) throws MesasException {
+        if (m.getServicio() == null || !m.isOcupado()){
+            throw new MesasException("La mesa no está abierta");
+        }
+        boolean encontro = false;
+        for (Pedido pedido : m.getServicio().getPedidos()) {
+            if(!pedido.Procesado() && !encontro){
+                encontro = true;
+                throw new MesasException("Tiene pedidos pendientes");
+            }
+        }
+        m.setServicio(null);
+        m.setOcupado(false);
+    }
+    
     public ArrayList<Producto> getProductos() {
         ArrayList<UnidadProcesadora> unidades = fachada.getUnidades();
         ArrayList<Producto> productos = new ArrayList<>();
@@ -81,6 +96,7 @@ public class ControladorMesas implements Observador {
         Servicio s = m.getServicio();
         Pedido pedido = new Pedido(p, cantidad, descripcion, false, null);
         s.getPedidos().add(pedido);
+        s.setMontoTotal(cantidad*p.getPrecioUnitario());
     }
 
         

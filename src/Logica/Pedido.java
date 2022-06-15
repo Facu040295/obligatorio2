@@ -42,11 +42,8 @@ public class Pedido {
         this.descripcion = descripcion;
     }
 
-    public String Procesado() {
-        if(procesado == true){
-            return "El pedido se encuentra procesado";
-        }
-        return "El pedido aún no fue procesado";
+    public boolean Procesado() {
+        return procesado;
     }
 
     public void setProcesado(boolean procesado) {
