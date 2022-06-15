@@ -16,14 +16,11 @@ public class Fachada extends Observable {
     public static Fachada getInstancia() {
         return instancia;
     }
-    
-    private Fachada() {
-    }
 
     public void agregarUsuarioMozo(String n, String p, String nc, int telefono) {
         sUsuarios.agregarUsuarioMozo(n, p, nc, telefono);
     }
-    
+
     public ArrayList<Mozo> getMozos(){
         return sUsuarios.getMozos();
     }
@@ -52,8 +49,8 @@ public class Fachada extends Observable {
         sUsuarios.agregarMesa(numero, m);
     }
     
-    public ArrayList<Servicio> getServicios() {
-        return sMesas.getServicios();
+    public ArrayList<Pedido> getPedidos() {
+        return sMesas.getPedidos();
     }
     
     public void agregarProducto(int codigo, String nombre, float precioUnitario, int stock, UnidadProcesadora unidadProcesadora){

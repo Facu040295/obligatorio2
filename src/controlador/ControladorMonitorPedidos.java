@@ -22,7 +22,6 @@ import vista.VistaMonitorPedidos;
  */
 public class ControladorMonitorPedidos implements Observador{
     
-    Fachada fachada = Fachada.getInstancia();
     IvistaMonitorPedidos vista;
     UnidadProcesadora u;
     Gestor g;
@@ -40,19 +39,16 @@ public class ControladorMonitorPedidos implements Observador{
     }
 
     public void mostrarPedidosUnidad(){
-        ArrayList<Servicio> servicios = fachada.getServicios();
-        ArrayList<Pedido> pedidos = new ArrayList<>();
-        for(Servicio s : servicios){
-            for(Pedido p : s.getPedidos()){
-                for(Producto prod : u.getProductos()){
-                    if(prod == p.getProducto()){
-                        pedidos.add(p);
-                    }
-                }
+        ArrayList<Pedido> pedidos = Fachada.getInstancia().getPedidos();
+        ArrayList<Pedido> pedidosUnidad = new ArrayList<>();
+
+        for(Pedido p : pedidos){
+            if(u.getProductos().contains(p.getProducto())){
+                pedidosUnidad.add(p);
             }
         }
         
-        vista.mostrarPedidosUnidadProcesadora(pedidos);
+        vista.mostrarPedidosUnidadProcesadora(pedidosUnidad);
         
     }
     @Override
