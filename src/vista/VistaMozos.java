@@ -334,9 +334,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                     .addGroup(pnl_MostrarBeneficioLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(lbl_MontoFinal))
-                    .addGroup(pnl_MostrarBeneficioLayout.createSequentialGroup()
-                        .addComponent(lbl_NombreDescuento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbl_NombreDescuento))
                 .addGap(96, 96, 96))
         );
         pnl_MostrarBeneficioLayout.setVerticalGroup(
@@ -677,6 +675,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     public void logout() {
         try {
             controlador.logout();
+            this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         } catch (MesasException ex) {
             this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
             JOptionPane.showMessageDialog(this, ex.getMessage(), null, JOptionPane.ERROR_MESSAGE);
@@ -710,6 +709,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
             JOptionPane.showMessageDialog(null, "La mesa se abrió correctamente");
             pnl_CierreMesa.setVisible(false);
             pnl_MostrarBeneficio.setVisible(false);
+            mostrarServicio();
             pnl_Servicio.setVisible(true);
         } catch (MesasException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), null, JOptionPane.ERROR_MESSAGE);
