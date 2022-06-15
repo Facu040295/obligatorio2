@@ -12,7 +12,6 @@ import Observador.Observador;
 import java.util.ArrayList;
 import Logica.Sesion;
 import Logica.UnidadProcesadora;
-import java.awt.Color;
 
 public class ControladorMesas implements Observador {
 
@@ -37,9 +36,18 @@ public class ControladorMesas implements Observador {
         vista.mostrarMesasAsignadas(getMesasAsignadas());
     }
     
-    public void logout() {
-       fachada.logout(sesion);
-       fachada.quitar(this);
+    public void logout() throws MesasException {
+       boolean abiertas = false;
+        for (Mesa mesa : getMesasAsignadas()) {
+            if(mesa.isOcupado() && !abiertas){
+                abiertas = true;
+                throw new MesasException("Debe cerrar las mesas abiertas antes de salir");
+            }
+        }
+        if(!abiertas){
+            fachada.logout(sesion);
+            fachada.quitar(this);
+        }
     }
     
     public void abrirMesa(Mesa m) throws MesasException{

@@ -11,8 +11,11 @@ import Logica.MesasException;
 import Logica.Pedido;
 import Logica.Producto;
 import Logica.Sesion;
+import java.awt.event.WindowEvent;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 
 public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
 
@@ -94,8 +97,8 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 500));
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
@@ -540,10 +543,6 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         }
     }//GEN-LAST:event_btn_CerrarMesaActionPerformed
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        logout();
-    }//GEN-LAST:event_formWindowClosed
-
     private void btn_NuevoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NuevoPedidoActionPerformed
         listarProductos(controlador.getProductos());
         txt_Descripcion.setText("");
@@ -581,6 +580,10 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         pnl_MostrarBeneficio.setVisible(false);
         pnl_Servicio.setVisible(false);
     }//GEN-LAST:event_btn_ConfirmarCierreActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        logout();
+    }//GEN-LAST:event_formWindowClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -672,7 +675,12 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     }
     
     public void logout() {
-       controlador.logout();
+        try {
+            controlador.logout();
+        } catch (MesasException ex) {
+            this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), null, JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @Override
