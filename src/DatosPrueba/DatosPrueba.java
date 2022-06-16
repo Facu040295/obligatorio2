@@ -37,14 +37,14 @@ public class DatosPrueba {
         fachada.agregarMesa(4,"a");
         fachada.agregarMesa(10,"a");
         fachada.agregarMesa(12,"a");
-        fachada.agregarMesa(2,"a");
+        fachada.agregarMesa(11,"a");
         
         fachada.agregarMesa(2,"b");
         fachada.agregarMesa(5,"b");
         fachada.agregarMesa(6,"b");
-        fachada.agregarMesa(7,"b");
-        fachada.agregarMesa(8,"b");
-        fachada.agregarMesa(9,"b");
+        //fachada.agregarMesa(7,"b");
+        //fachada.agregarMesa(8,"b");
+        //fachada.agregarMesa(9,"b");
         
         //---- Productos ----------------------
         fachada.agregarProducto(1,"Napolitana",380,30,fachada.getUnidades().get(0));

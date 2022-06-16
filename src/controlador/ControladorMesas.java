@@ -56,30 +56,44 @@ public class ControladorMesas implements Observador {
         return abiertas;
     }
     
-    public void abrirMesa(Mesa m) throws MesasException{
-        if (m.getServicio() != null || m.isOcupado()){
-            throw new MesasException("La mesa ya está abierta");
-        }
+    public boolean abrirMesa(Mesa m){
+        boolean abre = true;
+        try {
+            if (m.getServicio() != null || m.isOcupado()){
+                abre = false;
+                throw new MesasException("La mesa ya está abierta");
+            }
         Servicio s = new Servicio(m, null, 0);
         m.setServicio(s);
         m.setOcupado(true);
         mesasAsignadas();
-    }
-
-    public void cerrarMesa(Mesa m) throws MesasException {
-        if (m.getServicio() == null || !m.isOcupado()){
-            throw new MesasException("La mesa no está abierta");
+        } catch (MesasException ex) {
+            interfase.mostrarError(ex.getMessage());
         }
-        boolean encontro = false;
-        for (Pedido pedido : m.getServicio().getPedidos()) {
-            if(!pedido.isFinalizado()&& !encontro){
-                encontro = true;
-                throw new MesasException("Tiene pedidos pendientes");
+        return abre;
+    }
+    
+    public boolean cerrarMesa(Mesa m){
+        boolean cierra = true;
+        try {
+            if (m.getServicio() == null || !m.isOcupado()){
+                cierra = false;
+                throw new MesasException("La mesa no está abierta");
             }
+            for (Pedido pedido : m.getServicio().getPedidos()) {
+                if(!pedido.isFinalizado()&& cierra){
+                    cierra = false;
+                    throw new MesasException("Tiene pedidos pendientes");
+                }
+            }
+            m.setServicio(null);
+            m.setOcupado(false);
+        } catch (MesasException ex) {
+            interfase.mostrarError(ex.getMessage());
         }
-        m.setServicio(null);
-        m.setOcupado(false);
+        return cierra;
     }
+  
     
     public ArrayList<Producto> getProductos() {
         ArrayList<UnidadProcesadora> unidades = fachada.getUnidades();

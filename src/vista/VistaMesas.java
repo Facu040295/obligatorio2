@@ -533,9 +533,12 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
     private void btn_CerrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CerrarMesaActionPerformed
         pnl_NuevoPedido.setVisible(false);
         if(mesaSeleccionada.isOcupado()){
-        pnl_CierreMesa.setVisible(true);
-        pnl_MostrarBeneficio.setVisible(false);
-        pnl_Servicio.setVisible(true);
+            pnl_CierreMesa.setVisible(true);
+            pnl_MostrarBeneficio.setVisible(false);
+            pnl_Servicio.setVisible(true);
+        }
+        else {
+            cerrarMesa(mesaSeleccionada);
         }
     }//GEN-LAST:event_btn_CerrarMesaActionPerformed
 
@@ -699,15 +702,14 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
 
     @Override
     public void abrirMesa(Mesa m){
-        try {
-            controlador.abrirMesa(m);
+        if (controlador.abrirMesa(m)){
             JOptionPane.showMessageDialog(null, "La mesa se abrió correctamente");
             pnl_CierreMesa.setVisible(false);
             pnl_MostrarBeneficio.setVisible(false);
-            controlador.mostrarServicio(m);
+            mostrarServicio(m.getServicio());
+            //controlador.mostrarServicio(m);
             pnl_Servicio.setVisible(true);
-        } catch (MesasException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), null, JOptionPane.ERROR_MESSAGE);
+            mostrarMesasAsignadas(controlador.getMesasAsignadas());
         }
     }
 
@@ -720,15 +722,14 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
     
     @Override
     public void mostrarServicio(Servicio s){
-
-        ArrayList<String> listado = new ArrayList();
+        /*controlador.mostrarServicio(m);
         for (Pedido p : s.getPedidos()) {
             listado.add(p.getProducto().getNombre() + " - " + p.getCantidad()
                         + " - " + p.getProducto().getPrecioUnitario() + " - " + 
                         (p.getProducto().getPrecioUnitario() * p.getCantidad()));
         }
         lst_PedidosServicio.setListData(listado.toArray());
-        lbl_Total.setText("Total del servicio: $" + s.getMontoTotal());
+        lbl_Total.setText("Total del servicio: $" + s.getMontoTotal());*/
     }
 
     @Override
@@ -743,15 +744,12 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
     }
 
     private void cerrarMesa(Mesa m) {
-        try {
-            controlador.cerrarMesa(m);
+        if (controlador.cerrarMesa(m)){
             JOptionPane.showMessageDialog(null, "La mesa se cerró correctamente");
             pnl_CierreMesa.setVisible(false);
             pnl_MostrarBeneficio.setVisible(false);
             pnl_Servicio.setVisible(false);
             mostrarMesasAsignadas(controlador.getMesasAsignadas());
-        } catch (MesasException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), null, JOptionPane.ERROR_MESSAGE);
         }
     }
 
