@@ -81,8 +81,8 @@ public class ControladorMonitorPedidos implements Observador{
     }
     
     public void agregarPedidoGestor(Pedido p){
-        p.setGestorAsignado(g);
-        g.setPedido(p);
+        p.setGestorAsignado(sesion.getUsuarioGestor());
+        sesion.getUsuarioGestor().setPedido(p);
     }
     
     public void mostrarPedidosGestor(){
