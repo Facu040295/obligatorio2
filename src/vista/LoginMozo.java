@@ -1,6 +1,5 @@
 package vista;
 
-import Logica.Mozo;
 import Logica.Sesion;
 import controlador.ControladorLogin;
 import java.awt.Frame;
@@ -30,7 +29,7 @@ public class LoginMozo extends LoginAbstracto{
     }
 
     @Override
-    public void ejecutarProximoCasoUso(Object dato) {
-        new VistaMesas(null, false, (Sesion) dato).setVisible(true);
+    public void ejecutarProximoCasoUso(Sesion s) {
+        new VistaMesas(null, false, s).setVisible(true);
     }
 }

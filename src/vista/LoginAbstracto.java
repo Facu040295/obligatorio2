@@ -1,5 +1,6 @@
 package vista;
 
+import Logica.Sesion;
 import javax.swing.JOptionPane;
 import Logica.UsuarioException;
 import controlador.IVistaLogin;
@@ -113,5 +114,5 @@ public abstract class LoginAbstracto extends javax.swing.JDialog implements IVis
 
     public abstract void invocarLoginLogicaNegocio(String nom, String pwd) throws UsuarioException;
 
-    public abstract void ejecutarProximoCasoUso(Object dato);
+    public abstract void ejecutarProximoCasoUso(Sesion s);
 }

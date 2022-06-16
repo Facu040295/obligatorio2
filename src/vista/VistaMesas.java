@@ -11,11 +11,8 @@ import Logica.Pedido;
 import Logica.Producto;
 import Logica.Servicio;
 import Logica.Sesion;
-import java.awt.event.WindowEvent;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.WindowConstants;
 import controlador.IVistaMesas;
 
 public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{

@@ -12,6 +12,6 @@ import Logica.Sesion;
  */
 public interface IVistaLogin {
 
-    public void ejecutarProximoCasoUso(Object dato);
+    public void ejecutarProximoCasoUso(Sesion s);
     
 }

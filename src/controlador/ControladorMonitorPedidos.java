@@ -6,16 +6,13 @@ package controlador;
 
 import Logica.Fachada;
 import Logica.Gestor;
-import Logica.Mesa;
 import Logica.Pedido;
-import Logica.Producto;
 import Logica.Servicio;
 import Logica.Sesion;
 import Logica.UnidadProcesadora;
 import Observador.Observable;
 import Observador.Observador;
 import java.util.ArrayList;
-import vista.VistaMonitorPedidos;
 
 /**
  *

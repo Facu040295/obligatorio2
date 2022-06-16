@@ -15,7 +15,6 @@ import Logica.UnidadProcesadora;
 
 public class ControladorMesas implements Observador {
 
-    //IvistaMesas miInterface;
     Fachada fachada;
     Mozo mozo;
     Sesion sesion;
