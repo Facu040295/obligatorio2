@@ -4,14 +4,14 @@ public class Pedido {
     private Producto producto;
     private int cantidad;
     private String descripcion;
-    private boolean procesado;
+    private boolean finalizado;
     private Gestor gestorAsignado;
 
-    public Pedido(Producto producto, int cantidad, String descripcion, boolean procesado, Gestor gestorAsignado) {
+    public Pedido(Producto producto, int cantidad, String descripcion, boolean finalizado, Gestor gestorAsignado) {
         this.producto = producto;
         this.cantidad = cantidad;
         this.descripcion = descripcion;
-        this.procesado = false;
+        this.finalizado = false;
         this.gestorAsignado = null;
     }
 
@@ -42,12 +42,12 @@ public class Pedido {
         this.descripcion = descripcion;
     }
 
-    public boolean Procesado() {
-        return procesado;
+    public boolean isFinalizado() {
+        return finalizado;
     }
 
-    public void setProcesado(boolean procesado) {
-        this.procesado = procesado;
+    public void setFinalizado(boolean finalizado) {
+        this.finalizado = finalizado;
     }
 
     public Gestor getGestorAsignado() {
@@ -57,5 +57,5 @@ public class Pedido {
     public void setGestorAsignado(Gestor gestorAsignado) {
         this.gestorAsignado = gestorAsignado;
     }
-    
+
 }

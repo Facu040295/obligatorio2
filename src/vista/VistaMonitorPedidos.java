@@ -1,29 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package vista;
 
-import Logica.Fachada;
-import Logica.Gestor;
 import Logica.Pedido;
 import Logica.Sesion;
 import Logica.UnidadProcesadora;
 import controlador.ControladorMonitorPedidos;
 import java.util.ArrayList;
-import controlador.IVistaMonitorPedidos;
+import controlador.IvistaMonitorPedidos;
 
-/**
- *
- * @author facundo.lopez
- */
-public class VistaMonitorPedidos extends javax.swing.JDialog implements IVistaMonitorPedidos{
+public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMonitorPedidos{
     
     private ControladorMonitorPedidos controlador;
 
-    /**
-     * Creates new form VistaMonitorPedidos
-     */
     public VistaMonitorPedidos(java.awt.Frame parent, boolean modal, Sesion sesion) {
         super(parent, modal);
         initComponents();
@@ -152,13 +139,10 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IVistaMo
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pnl_Unidades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(pnl_Unidades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -238,4 +222,5 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IVistaMo
             cmb_Unidades.addItem(u.getNombre());
         }
     }
+
 }

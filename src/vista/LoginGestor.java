@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package vista;
 
 import Logica.Gestor;
@@ -12,10 +8,6 @@ import java.awt.Frame;
 import Logica.UsuarioException;
 import java.util.ArrayList;
 
-/**
- *
- * @author facu2
- */
 public class LoginGestor extends LoginAbstracto{
 
     ControladorLogin controlador;
@@ -38,11 +30,6 @@ public class LoginGestor extends LoginAbstracto{
     @Override
     public void ejecutarProximoCasoUso(Object dato) {
         new VistaMonitorPedidos(null, false, (Sesion) dato).setVisible(true);
-    }
-
-    @Override
-    public void ejecutarProximoCasoUso(Sesion s) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

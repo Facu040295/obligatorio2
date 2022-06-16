@@ -2,7 +2,6 @@ package Logica;
 
 import Observador.Observable;
 import java.util.ArrayList;
-import Logica.UsuarioException;
 
 public class Fachada extends Observable {
     private SistemaUsuarios sUsuarios = new SistemaUsuarios();

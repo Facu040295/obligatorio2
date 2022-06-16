@@ -68,7 +68,7 @@ public class ControladorMesas implements Observador {
         }
         boolean encontro = false;
         for (Pedido pedido : m.getServicio().getPedidos()) {
-            if(!pedido.Procesado() && !encontro){
+            if(!pedido.isFinalizado()&& !encontro){
                 encontro = true;
                 throw new MesasException("Tiene pedidos pendientes");
             }

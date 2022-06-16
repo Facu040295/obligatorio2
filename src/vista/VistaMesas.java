@@ -760,4 +760,9 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
         }
     }
 
+    @Override
+    public void mostrarServicio() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

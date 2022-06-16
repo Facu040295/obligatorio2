@@ -26,7 +26,6 @@ public abstract class LoginAbstracto extends javax.swing.JDialog implements IVis
         txt_Password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(300, 180));
 
         jLabel1.setText("Usuario:");
 

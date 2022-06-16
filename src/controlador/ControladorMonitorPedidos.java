@@ -23,12 +23,12 @@ import vista.VistaMonitorPedidos;
  */
 public class ControladorMonitorPedidos implements Observador{
     
-    IVistaMonitorPedidos interfase;
+    IvistaMonitorPedidos interfase;
     UnidadProcesadora u;
     Gestor g;
     Servicio s;
     
-    public ControladorMonitorPedidos(Sesion s, IVistaMonitorPedidos v){
+    public ControladorMonitorPedidos(Sesion s, IvistaMonitorPedidos v){
         this.interfase = v;
         this.g = s.getUsuarioGestor();
         mostrarTitulo();
@@ -74,7 +74,7 @@ public class ControladorMonitorPedidos implements Observador{
         ArrayList<Pedido> pedidosActivos = new ArrayList<>();
         
         for (Pedido p : u.getPedidos()) {
-            if(!p.Procesado() && p.getGestorAsignado() == null){
+            if(!p.isFinalizado()&& p.getGestorAsignado() == null){
                 pedidosActivos.add(p);
             }
         }
