@@ -12,6 +12,7 @@ public class Gestor extends Usuario {
     public Gestor(String nombre, String password, String nombreCompleto) {
         super(nombre, password, nombreCompleto);
         this.ultimaConexion = Date.from(Instant.now());
+        this.pedidos = new ArrayList<Pedido>();
     }
 
     public Date getUltimaConexion() {
