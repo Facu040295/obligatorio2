@@ -671,12 +671,10 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
     }
     
     public void logout() {
-        try {
-            controlador.logout();
+        if(!controlador.logout()){
             this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        } catch (MesasException ex) {
-            this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-            JOptionPane.showMessageDialog(this, ex.getMessage(), null, JOptionPane.ERROR_MESSAGE);
+        } else {
+           this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
         }
     }
 
@@ -755,5 +753,10 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
         } catch (MesasException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), null, JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    @Override
+    public void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

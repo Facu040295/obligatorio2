@@ -37,18 +37,23 @@ public class ControladorMesas implements Observador {
         interfase.mostrarMesasAsignadas(getMesasAsignadas());
     }
     
-    public void logout() throws MesasException {
-       boolean abiertas = false;
-        for (Mesa mesa : getMesasAsignadas()) {
-            if(mesa.isOcupado() && !abiertas){
-                abiertas = true;
-                throw new MesasException("Debe cerrar las mesas abiertas antes de salir");
+    public boolean logout(){
+        boolean abiertas = false;
+        try {
+            for (Mesa mesa : getMesasAsignadas()) {
+                if(mesa.isOcupado() && !abiertas){
+                    abiertas = true;
+                    throw new MesasException("Debe cerrar las mesas abiertas antes de salir");
+                }
             }
+            if(!abiertas){
+                fachada.logout(sesion);
+                fachada.quitar(this);
+            }
+        } catch (MesasException ex) {
+            interfase.mostrarError(ex.getMessage());
         }
-        if(!abiertas){
-            fachada.logout(sesion);
-            fachada.quitar(this);
-        }
+        return abiertas;
     }
     
     public void abrirMesa(Mesa m) throws MesasException{
