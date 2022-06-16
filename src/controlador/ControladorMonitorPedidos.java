@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
 import Logica.Fachada;
@@ -14,18 +10,18 @@ import Observador.Observable;
 import Observador.Observador;
 import java.util.ArrayList;
 
-/**
- *
- * @author facu2
- */
 public class ControladorMonitorPedidos implements Observador{
     
     IvistaMonitorPedidos interfase;
+    Fachada fachada;
+    Sesion sesion;
     UnidadProcesadora u;
     Gestor g;
     Servicio s;
     
     public ControladorMonitorPedidos(Sesion s, IvistaMonitorPedidos v){
+        fachada = Fachada.getInstancia();
+        sesion = s;
         this.interfase = v;
         this.g = s.getUsuarioGestor();
         mostrarTitulo();
@@ -93,6 +89,11 @@ public class ControladorMonitorPedidos implements Observador{
             actualizarPedidosUnidad();
             mostrarPedidosUnidad();
         }
+    }
+
+    public void logout() {
+        fachada.logout(sesion);
+        fachada.quitar(this);
     }
     
 }

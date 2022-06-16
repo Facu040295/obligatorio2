@@ -39,6 +39,11 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
         btn_Finalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         btn_SeleccionarUnidad.setText("Seleccionar");
         btn_SeleccionarUnidad.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +169,10 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
         this.ocultarUnidades();
     }//GEN-LAST:event_btn_SeleccionarUnidadActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+       logout();
+    }//GEN-LAST:event_formWindowClosing
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Finalizar;
@@ -216,6 +225,10 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
         for(UnidadProcesadora u : unidades){
             cmb_Unidades.addItem(u.getNombre());
         }
+    }
+
+    private void logout() {
+        controlador.logout();
     }
 
 }
