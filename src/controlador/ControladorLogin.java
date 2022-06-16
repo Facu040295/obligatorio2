@@ -5,10 +5,10 @@ import Logica.Sesion;
 import Logica.UsuarioException;
 
 public class ControladorLogin {
-    IvistaLogin interfase;
+    IVistaLogin interfase;
     Fachada fachada;
     
-    public ControladorLogin(IvistaLogin vista) {
+    public ControladorLogin(IVistaLogin vista) {
         this.interfase = vista;
         this.fachada = Fachada.getInstancia();
     }

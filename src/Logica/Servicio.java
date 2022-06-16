@@ -31,7 +31,7 @@ public class Servicio extends Observable {
         pedidos.add(p);
         float montoPedido = (p.getProducto().getPrecioUnitario() * p.getCantidad()); 
         sumarTotal(montoPedido);
-        this.avisar(Eventos.agregarPedido);
+        Fachada.getInstancia().avisar(Eventos.agregarPedido);
     }
 
     public float getMontoTotal() {

@@ -3,7 +3,7 @@ package Observador;
 import java.util.ArrayList;
 
 public abstract class Observable {
-   private ArrayList<Observador> observadores = new ArrayList();
+   private final ArrayList<Observador> observadores = new ArrayList();
 
     public void agregar(Observador o) {
         if (!observadores.contains(o)) {

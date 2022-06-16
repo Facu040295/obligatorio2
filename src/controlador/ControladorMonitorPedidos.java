@@ -15,7 +15,7 @@ import Logica.UnidadProcesadora;
 import Observador.Observable;
 import Observador.Observador;
 import java.util.ArrayList;
-import vista.VistaGestores;
+import vista.VistaMonitorPedidos;
 
 /**
  *
@@ -23,13 +23,13 @@ import vista.VistaGestores;
  */
 public class ControladorMonitorPedidos implements Observador{
     
-    iVistaMonitorPedidos vista;
+    IVistaMonitorPedidos interfase;
     UnidadProcesadora u;
     Gestor g;
     Servicio s;
     
-    public ControladorMonitorPedidos(Sesion s, iVistaMonitorPedidos v){
-        this.vista = v;
+    public ControladorMonitorPedidos(Sesion s, IVistaMonitorPedidos v){
+        this.interfase = v;
         this.g = s.getUsuarioGestor();
         mostrarTitulo();
         
@@ -40,7 +40,7 @@ public class ControladorMonitorPedidos implements Observador{
     public void mostrarTitulo() {
         if(u != null){
             String titulo = "Unidad Procesadora: " + u.getNombre() + " | Gestor: " + g.getNombreCompleto();
-            vista.mostrarTitulo(titulo);
+            interfase.mostrarTitulo(titulo);
         }
     }
     
@@ -49,17 +49,19 @@ public class ControladorMonitorPedidos implements Observador{
     }
     
     public void listarUnidades(){
-        vista.listarUnidades(Fachada.getInstancia().getUnidades());
+        interfase.listarUnidades(Fachada.getInstancia().getUnidades());
     }
 
     public void seleccionarUnidad(UnidadProcesadora unidad){
         this.u = unidad;
+        actualizarPedidosUnidad();
         mostrarPedidosUnidad();
     }
     
-    public void agregarPedidoUnidad(){
-        ArrayList<Pedido> pedidos = Fachada.getInstancia().getPedidos();
+    public void actualizarPedidosUnidad(){
         
+        ArrayList<Pedido> pedidos = Fachada.getInstancia().getPedidos();
+
         for(Pedido p : pedidos){
             if(u.getProductos().contains(p.getProducto()) && !u.getPedidos().contains(p)){
                 u.setPedido(p);
@@ -68,20 +70,30 @@ public class ControladorMonitorPedidos implements Observador{
     }
     
     public void mostrarPedidosUnidad(){
+
+        ArrayList<Pedido> pedidosActivos = new ArrayList<>();
         
-        ArrayList<Pedido> pedidosUnidad = new ArrayList<>();
-        
-        for(Pedido p : u.getPedidos()){
-            if(p.getGestorAsignado() == null && !p.Procesado()){
-                pedidosUnidad.add(p);
+        for (Pedido p : u.getPedidos()) {
+            if(!p.Procesado() && p.getGestorAsignado() == null){
+                pedidosActivos.add(p);
             }
         }
-        vista.mostrarPedidosUnidad(Fachada.getInstancia().getPedidos());  
+        interfase.mostrarPedidosUnidad(pedidosActivos);  
+    }
+    
+    public void agregarPedidoGestor(Pedido p){
+        p.setGestorAsignado(g);
+        g.setPedido(p);
+    }
+    
+    public void mostrarPedidosGestor(){
+        interfase.mostrarPedidosGestor(g.getPedidos());
     }
     
     @Override
     public void actualizar(Object evento, Observable origen) {
         if(evento.equals(Fachada.Eventos.agregarPedido)){
+            actualizarPedidosUnidad();
             mostrarPedidosUnidad();
         }
     }

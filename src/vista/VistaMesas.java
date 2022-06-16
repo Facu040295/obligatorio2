@@ -4,7 +4,6 @@ package vista;
 import Logica.Mesa;
 import Logica.Mozo;
 import controlador.ControladorMesas;
-import controlador.IvistaMesas;
 import java.awt.Color;
 import java.util.ArrayList;
 import Logica.MesasException;
@@ -17,8 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
+import controlador.IVistaMesas;
 
-public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
+public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
 
     private ControladorMesas controlador;
     private ArrayList<JButton> botones = new ArrayList<>();
@@ -26,7 +26,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
   
     //private ControladorLogin controladorLog;
 
-    public VistaMozos(java.awt.Frame parent, boolean modal, Sesion sesion) {
+    public VistaMesas(java.awt.Frame parent, boolean modal, Sesion sesion) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -96,7 +96,6 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         jLabel4.setText("Nombre Producto - Cantidad - Descripción - Procesado");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 500));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -707,7 +706,6 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     public void abrirMesa(Mesa m){
         try {
             controlador.abrirMesa(m);
-            mostrarMesasAsignadas(controlador.getMesasAsignadas());
             JOptionPane.showMessageDialog(null, "La mesa se abrió correctamente");
             pnl_CierreMesa.setVisible(false);
             pnl_MostrarBeneficio.setVisible(false);
@@ -741,7 +739,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     @Override
     public void agregarPedido(Mesa m, Producto p, String descripcion, int cantidad) {
         try {
-            controlador.AgregarPedido(m, p, descripcion, cantidad);
+            controlador.agregarPedido(m, p, descripcion, cantidad);
             JOptionPane.showMessageDialog(null, "Se ha agregado el pedido");
             controlador.mostrarServicio(m);
         } catch (Exception e) {

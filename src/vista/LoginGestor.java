@@ -37,7 +37,7 @@ public class LoginGestor extends LoginAbstracto{
 
     @Override
     public void ejecutarProximoCasoUso(Object dato) {
-        new VistaGestores(null, false, (Sesion) dato).setVisible(true);
+        new VistaMonitorPedidos(null, false, (Sesion) dato).setVisible(true);
     }
     
 }

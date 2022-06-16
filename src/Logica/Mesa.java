@@ -1,6 +1,8 @@
 package Logica;
 
-public class Mesa {
+import Observador.Observable;
+
+public class Mesa extends Observable{
     private int numero;
     private Mozo mozoAsignado;
     private Servicio servicio;
@@ -34,6 +36,7 @@ public class Mesa {
 
     public void setServicio(Servicio servicio) {
         this.servicio = servicio;
+        Fachada.getInstancia().avisar(Fachada.Eventos.abrirMesa);
     }
 
     public boolean isOcupado() {

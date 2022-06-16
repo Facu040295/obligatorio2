@@ -19,21 +19,23 @@ public class ControladorMesas implements Observador {
     Fachada fachada;
     Mozo mozo;
     Sesion sesion;
-    IvistaMesas vista;
+    IVistaMesas interfase;
     
-    public ControladorMesas(Sesion s, IvistaMesas v) {
+    public ControladorMesas(Sesion s, IVistaMesas v) {
         fachada = Fachada.getInstancia();
         sesion = s;
-        vista = v;
+        interfase = v;
         mozo = s.getUsuarioMozo();
+        
+        Fachada.getInstancia().agregar(this);
     }
     
     public ArrayList<Mesa> getMesasAsignadas(){
         return mozo.getMesasAsignadas();
     }
     
-    public void MesasAsignadas() {
-        vista.mostrarMesasAsignadas(getMesasAsignadas());
+    public void mesasAsignadas() {
+        interfase.mostrarMesasAsignadas(getMesasAsignadas());
     }
     
     public void logout() throws MesasException {
@@ -57,6 +59,7 @@ public class ControladorMesas implements Observador {
         Servicio s = new Servicio(m, null, 0);
         m.setServicio(s);
         m.setOcupado(true);
+        mesasAsignadas();
     }
 
     public void cerrarMesa(Mesa m) throws MesasException {
@@ -89,7 +92,7 @@ public class ControladorMesas implements Observador {
     
     public void mostrarServicio(Mesa m){
         if(m.isOcupado()){
-            vista.mostrarServicio(m.getServicio());
+            interfase.mostrarServicio(m.getServicio());
         }
     }
     
@@ -97,7 +100,7 @@ public class ControladorMesas implements Observador {
         vista.listarProductos(getProductos());
     }*/
     
-    public void AgregarPedido(Mesa m, Producto p, String descripcion, int cantidad) throws MesasException{
+    public void agregarPedido(Mesa m, Producto p, String descripcion, int cantidad) throws MesasException{
         if (!m.isOcupado()){
             throw new MesasException("La mesa está cerrada");
         }
@@ -116,7 +119,7 @@ public class ControladorMesas implements Observador {
     @Override
     public void actualizar(Object evento, Observable origen) {
         if(evento.equals(Fachada.Eventos.abrirMesa)){
-            MesasAsignadas();
+            mesasAsignadas();
         }
     }
 }

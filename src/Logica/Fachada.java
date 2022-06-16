@@ -45,6 +45,10 @@ public class Fachada extends Observable {
         return sUnidadesProcesadoras.getUnidades();
     }
     
+    public ArrayList<Pedido> getPedidosUnidad(UnidadProcesadora u){
+        return sUnidadesProcesadoras.getPedidosUnidad(u);
+    }
+    
     public void agregarMesa(int numero, String m) {
         sMesas.agregarMesa(numero, m);
     }

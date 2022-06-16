@@ -31,6 +31,6 @@ public class LoginMozo extends LoginAbstracto{
 
     @Override
     public void ejecutarProximoCasoUso(Object dato) {
-        new VistaMozos(null, false, (Sesion) dato).setVisible(true);
+        new VistaMesas(null, false, (Sesion) dato).setVisible(true);
     }
 }
