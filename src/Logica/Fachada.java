@@ -11,7 +11,7 @@ public class Fachada extends Observable {
     
     private static Fachada instancia = new Fachada();
 
-    public enum Eventos{abrirMesa};
+    public enum Eventos{abrirMesa, agregarPedido};
     
     public static Fachada getInstancia() {
         return instancia;
@@ -46,7 +46,7 @@ public class Fachada extends Observable {
     }
     
     public void agregarMesa(int numero, String m) {
-        sUsuarios.agregarMesa(numero, m);
+        sMesas.agregarMesa(numero, m);
     }
     
     public ArrayList<Pedido> getPedidos() {

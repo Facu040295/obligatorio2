@@ -35,7 +35,7 @@ public class ControladorUnidadesProcesadoras implements Observador {
     public Gestor getGestor(){
         return sesion.getUsuarioGestor();
     }
-    
+
     public ArrayList<UnidadProcesadora> getUnidades(){
         return fachada.getUnidades();
     }

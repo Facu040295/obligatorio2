@@ -1,8 +1,10 @@
 package Logica;
 
+import static Logica.Fachada.Eventos;
+import Observador.Observable;
 import java.util.ArrayList;
 
-public class Servicio {
+public class Servicio extends Observable {
     private Mesa mesa;
     private ArrayList<Pedido> pedidos;
     private float montoTotal;
@@ -23,6 +25,11 @@ public class Servicio {
     
     public ArrayList<Pedido> getPedidos() {
         return pedidos;
+    }
+    
+    public void setPedido(Pedido p) {
+        pedidos.add(p);
+        this.avisar(Eventos.agregarPedido);
     }
 
     public float getMontoTotal() {

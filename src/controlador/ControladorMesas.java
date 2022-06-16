@@ -103,7 +103,7 @@ public class ControladorMesas implements Observador {
         }*/
         Servicio s = m.getServicio();
         Pedido pedido = new Pedido(p, cantidad, descripcion, false, null);
-        s.getPedidos().add(pedido);
+        s.setPedido(pedido);
         s.setMontoTotal(cantidad*p.getPrecioUnitario());
     }
 

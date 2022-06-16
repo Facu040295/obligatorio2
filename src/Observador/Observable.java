@@ -2,7 +2,7 @@ package Observador;
 
 import java.util.ArrayList;
 
-public class Observable {
+public abstract class Observable {
    private ArrayList<Observador> observadores = new ArrayList();
 
     public void agregar(Observador o) {
