@@ -1,5 +1,6 @@
 package vista;
 
+import Logica.Gestor;
 import Logica.Sesion;
 import controlador.ControladorLogin;
 import java.awt.Frame;
@@ -25,8 +26,8 @@ public class LoginGestor extends LoginAbstracto{
     }
 
     @Override
-    public void ejecutarProximoCasoUso(Sesion s) {
-        new VistaMonitorPedidos(null, false, s).setVisible(true);
+    public void ejecutarProximoCasoUso(Object dato) {
+        new VistaMonitorPedidos(null, false, (Sesion) dato).setVisible(true);
     }
     
 }

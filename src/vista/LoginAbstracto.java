@@ -114,5 +114,5 @@ public abstract class LoginAbstracto extends javax.swing.JDialog implements IVis
 
     public abstract void invocarLoginLogicaNegocio(String nom, String pwd) throws UsuarioException;
 
-    public abstract void ejecutarProximoCasoUso(Sesion s);
+    public abstract void ejecutarProximoCasoUso(Object dato);
 }
