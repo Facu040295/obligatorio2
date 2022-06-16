@@ -765,7 +765,12 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
     }
     
     @Override
-    public void mostrarNotificacion(String notificacion) {
+    public void mostrarNotificacion(String notificacion, Mesa m) {
+
+        if(m == mesaSeleccionada){
+            controlador.mostrarServicio(m);
+        }
+        
         JOptionPane.showMessageDialog(this, notificacion, "Notificación", JOptionPane.INFORMATION_MESSAGE);
     }
 }

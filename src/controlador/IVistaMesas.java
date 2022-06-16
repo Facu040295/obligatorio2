@@ -5,6 +5,7 @@
 package controlador;
 
 import Logica.Mesa;
+import Logica.Pedido;
 import Logica.Producto;
 import Logica.Servicio;
 import java.util.ArrayList;
@@ -27,6 +28,6 @@ public interface IVistaMesas {
 
     public void mostrarError(String mensaje);
 
-    public void mostrarNotificacion(String notificacion);
+    public void mostrarNotificacion(String notificacion, Mesa m);
     
 }

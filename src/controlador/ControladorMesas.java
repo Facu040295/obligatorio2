@@ -117,9 +117,14 @@ public class ControladorMesas implements Observador {
     public ArrayList<String> cargarServicioMesa(Servicio s){
         ArrayList<String> listado = new ArrayList();
         for (Pedido p : s.getPedidos()) {
-            listado.add(p.getProducto().getNombre() + " - " + p.getCantidad()
+            String pedido = p.getProducto().getNombre() + " - " + p.getCantidad()
                         + " - $" + p.getProducto().getPrecioUnitario() + " P/U - $" + 
-                        (p.getProducto().getPrecioUnitario() * p.getCantidad()));
+                        (p.getProducto().getPrecioUnitario() * p.getCantidad()) + " - " + p.getEstado();
+            
+            if(p.getGestorAsignado() != null){
+                pedido += " - " + p.getGestorAsignado().getNombreCompleto();
+            }
+            listado.add(pedido);
         }
         return listado;
     }
@@ -153,13 +158,13 @@ public class ControladorMesas implements Observador {
     public void notificarPedidoProcesado(){
         
         ArrayList<Mesa> mesasAsignadas = this.getMesasAsignadas();
-        Pedido u = Fachada.getInstancia().getUltimoPedidoProcesado();
+        Pedido p = Fachada.getInstancia().getUltimoPedidoProcesado();
         
         for (Mesa m : mesasAsignadas) {
-            if(m.getServicio() != null && m.getServicio().getPedidos().contains(u)){
-                String notificacion = "El pedido de " + u.getCantidad() + " " + u.getProducto().getNombre() + " de la mesa " + m.getNumero() + " está siendo procesado.";
+            if(m.getServicio() != null && m.getServicio().getPedidos().contains(p)){
+                String notificacion = "El pedido de " + p.getCantidad() + " " + p.getProducto().getNombre() + " de la mesa " + m.getNumero() + " está siendo procesado.";
                         
-                interfase.mostrarNotificacion(notificacion);
+                interfase.mostrarNotificacion(notificacion, m);
             }
         }
     }
@@ -167,13 +172,13 @@ public class ControladorMesas implements Observador {
     public void notificarPedidoFinalizado(){
         
         ArrayList<Mesa> mesasAsignadas = this.getMesasAsignadas();
-        Pedido u = Fachada.getInstancia().getUltimoPedidoFinalizado();
+        Pedido p = Fachada.getInstancia().getUltimoPedidoFinalizado();
         
         for (Mesa m : mesasAsignadas) {
-            if(m.getServicio() != null && m.getServicio().getPedidos().contains(u)){
-                String notificacion = "El pedido de " + u.getCantidad() + " " + u.getProducto().getNombre() + " de la mesa " + m.getNumero() + " fue finalizado.";
+            if(m.getServicio() != null && m.getServicio().getPedidos().contains(p)){
+                String notificacion = "El pedido de " + p.getCantidad() + " " + p.getProducto().getNombre() + " de la mesa " + m.getNumero() + " fue finalizado.";
                         
-                interfase.mostrarNotificacion(notificacion);
+                interfase.mostrarNotificacion(notificacion, m);
             }
         }
     }
