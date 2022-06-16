@@ -66,7 +66,6 @@ public class ControladorMesas implements Observador {
         Servicio s = new Servicio(m, null, 0);
         m.setServicio(s);
         m.setOcupado(true);
-        mesasAsignadas();
         } catch (MesasException ex) {
             interfase.mostrarError(ex.getMessage());
         }
@@ -124,24 +123,30 @@ public class ControladorMesas implements Observador {
         return listado;
     }
     
-    /*public void ListarProductos(){
-        vista.listarProductos(getProductos());
-    }*/
     
-    public void agregarPedido(Mesa m, Producto p, String descripcion, int cantidad) throws MesasException{
-        if (!m.isOcupado()){
-            throw new MesasException("La mesa está cerrada");
+    public boolean agregarPedido(Mesa m, Producto p, String descripcion, int cantidad){
+        boolean agregado = true;
+        try {
+            if (!m.isOcupado()){
+                agregado = false;
+                throw new MesasException("La mesa está cerrada");
+            }
+            if (cantidad < 1){
+                agregado = false;
+                throw new MesasException("Cantidad inválida");
+            }
+            if (p.getStock() < cantidad){
+                agregado = false;
+                throw new MesasException("Sin stock, solo quedan " + p.getStock());
+            }
+            Servicio s = m.getServicio();
+            Pedido pedido = new Pedido(p, cantidad, descripcion, false, null);
+            s.setPedido(pedido);
+            p.setStock(p.getStock()- cantidad);
+        } catch (MesasException ex) {
+            interfase.mostrarError(ex.getMessage());
         }
-        if (cantidad < 1){
-            throw new MesasException("Cantidad inválida");
-        }
-        if (p.getStock() < cantidad){
-            throw new MesasException("Sin stock, solo quedan " + p.getStock());
-        }
-        Servicio s = m.getServicio();
-        Pedido pedido = new Pedido(p, cantidad, descripcion, false, null);
-        s.setPedido(pedido);
-        p.setStock(p.getStock()- cantidad);
+        return agregado;
     }
 
     

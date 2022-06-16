@@ -549,7 +549,7 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
         cmb_Productos.setSelectedIndex(0);
         pnl_CierreMesa.setVisible(false);
         pnl_MostrarBeneficio.setVisible(false);
-        pnl_NuevoPedido.setVisible(true);
+        pnl_NuevoPedido.setVisible(true);  
     }//GEN-LAST:event_btn_NuevoPedidoActionPerformed
 
     private void btn_AgregarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarPedidoActionPerformed
@@ -729,12 +729,9 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
 
     @Override
     public void agregarPedido(Mesa m, Producto p, String descripcion, int cantidad) {
-        try {
-            controlador.agregarPedido(m, p, descripcion, cantidad);
+        if(controlador.agregarPedido(m, p, descripcion, cantidad)){
             JOptionPane.showMessageDialog(null, "Se ha agregado el pedido");
-            controlador.mostrarServicio(m);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
+            mostrarServicio(m.getServicio());
         }
     }
 

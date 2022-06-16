@@ -45,6 +45,9 @@ public class Mesa extends Observable{
 
     public void setOcupado(boolean ocupado) {
         this.ocupado = ocupado;
+        if (ocupado == true){
+            Fachada.getInstancia().avisar(Fachada.Eventos.abrirMesa);
+        }
     }
     
 }
