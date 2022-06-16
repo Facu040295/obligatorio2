@@ -2,6 +2,7 @@ package controlador;
 
 import Logica.Mesa;
 import Logica.Producto;
+import Logica.Servicio;
 import java.util.ArrayList;
 
 public interface IvistaMesas {
@@ -11,7 +12,7 @@ public interface IvistaMesas {
 
     public void listarProductos(ArrayList<Producto> productos);
     
-    public void mostrarServicio();
+    public void mostrarServicio(Servicio s);
     
     public void agregarPedido(Mesa m, Producto p, String descripcion, int cantidad);
 }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import Logica.MesasException;
 import Logica.Pedido;
 import Logica.Producto;
+import Logica.Servicio;
 import Logica.Sesion;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
@@ -488,44 +489,45 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnl_CierreMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pnl_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 61, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 687, 636);
+        setBounds(0, 0, 687, 530);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_Mesa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa1ActionPerformed
         lbl_MesaSeleccionada.setText("Se ha seleccionado la " + btn_Mesa1.getText());
         mesaSeleccionada = controlador.getMesasAsignadas().get(0);
         mostrarEventosMesa();
-        mostrarServicio();
+        controlador.mostrarServicio(mesaSeleccionada);
     }//GEN-LAST:event_btn_Mesa1ActionPerformed
 
     private void btn_Mesa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa2ActionPerformed
         lbl_MesaSeleccionada.setText("Se ha seleccionado la " + btn_Mesa2.getText());
         mesaSeleccionada = controlador.getMesasAsignadas().get(1);
         mostrarEventosMesa();
-        mostrarServicio();
+        controlador.mostrarServicio(mesaSeleccionada);
     }//GEN-LAST:event_btn_Mesa2ActionPerformed
 
     private void btn_Mesa5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa5ActionPerformed
         lbl_MesaSeleccionada.setText("Se ha seleccionado la " + btn_Mesa5.getText());
         mesaSeleccionada = controlador.getMesasAsignadas().get(4);
         mostrarEventosMesa();
+        controlador.mostrarServicio(mesaSeleccionada);
     }//GEN-LAST:event_btn_Mesa5ActionPerformed
 
     private void btn_Mesa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa3ActionPerformed
         lbl_MesaSeleccionada.setText("Se ha seleccionado la " + btn_Mesa3.getText());
         mesaSeleccionada = controlador.getMesasAsignadas().get(2);
         mostrarEventosMesa();
-        mostrarServicio();
+        controlador.mostrarServicio(mesaSeleccionada);
     }//GEN-LAST:event_btn_Mesa3ActionPerformed
 
     private void btn_Mesa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Mesa4ActionPerformed
         lbl_MesaSeleccionada.setText("Se ha seleccionado la " + btn_Mesa4.getText());
         mesaSeleccionada = controlador.getMesasAsignadas().get(3);
         mostrarEventosMesa();
-        mostrarServicio();
+        controlador.mostrarServicio(mesaSeleccionada);
     }//GEN-LAST:event_btn_Mesa4ActionPerformed
 
     private void btn_AbrirMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AbrirMesaActionPerformed
@@ -709,7 +711,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
             JOptionPane.showMessageDialog(null, "La mesa se abrió correctamente");
             pnl_CierreMesa.setVisible(false);
             pnl_MostrarBeneficio.setVisible(false);
-            mostrarServicio();
+            controlador.mostrarServicio(m);
             pnl_Servicio.setVisible(true);
         } catch (MesasException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), null, JOptionPane.ERROR_MESSAGE);
@@ -724,19 +726,16 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
     }
     
     @Override
-    public void mostrarServicio(){
-        if(mesaSeleccionada.isOcupado()){
-            int total = 0;
-            ArrayList<String> listado = new ArrayList();
-            for (Pedido p : mesaSeleccionada.getServicio().getPedidos()) {
-                listado.add(p.getProducto().getNombre() + " - " + p.getCantidad()
-                            + " - " + p.getProducto().getPrecioUnitario() + " - " + 
-                            (p.getProducto().getPrecioUnitario() * p.getCantidad()));
-                total += (p.getProducto().getPrecioUnitario() * p.getCantidad());
-            }
-            lst_PedidosServicio.setListData(listado.toArray());
-            lbl_Total.setText("Total del servicio: $" + total);
+    public void mostrarServicio(Servicio s){
+
+        ArrayList<String> listado = new ArrayList();
+        for (Pedido p : s.getPedidos()) {
+            listado.add(p.getProducto().getNombre() + " - " + p.getCantidad()
+                        + " - " + p.getProducto().getPrecioUnitario() + " - " + 
+                        (p.getProducto().getPrecioUnitario() * p.getCantidad()));
         }
+        lst_PedidosServicio.setListData(listado.toArray());
+        lbl_Total.setText("Total del servicio: $" + s.getMontoTotal());
     }
 
     @Override
@@ -744,7 +743,7 @@ public class VistaMozos extends javax.swing.JDialog implements IvistaMesas{
         try {
             controlador.AgregarPedido(m, p, descripcion, cantidad);
             JOptionPane.showMessageDialog(null, "Se ha agregado el pedido");
-            mostrarServicio();
+            controlador.mostrarServicio(m);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
         }

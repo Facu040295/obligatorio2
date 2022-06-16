@@ -10,11 +10,12 @@ import Logica.Mesa;
 import Logica.Pedido;
 import Logica.Producto;
 import Logica.Servicio;
+import Logica.Sesion;
 import Logica.UnidadProcesadora;
 import Observador.Observable;
 import Observador.Observador;
 import java.util.ArrayList;
-import vista.VistaMonitorPedidos;
+import vista.VistaGestores;
 
 /**
  *
@@ -22,38 +23,67 @@ import vista.VistaMonitorPedidos;
  */
 public class ControladorMonitorPedidos implements Observador{
     
-    IvistaMonitorPedidos vista;
+    iVistaMonitorPedidos vista;
     UnidadProcesadora u;
     Gestor g;
+    Servicio s;
     
-    public ControladorMonitorPedidos(Gestor g, UnidadProcesadora u, IvistaMonitorPedidos v){
+    public ControladorMonitorPedidos(Sesion s, iVistaMonitorPedidos v){
         this.vista = v;
-        this.g = g;
-        this.u = u;
+        this.g = s.getUsuarioGestor();
         mostrarTitulo();
+        
+        Fachada.getInstancia().agregar(this);
+        
     }
     
-    private void mostrarTitulo() {
-        String titulo = "Unidad Procesadora: " + u.getNombre() + " | Gestor: " + g.getNombreCompleto();
-        vista.mostrarTitulo(titulo);
+    public void mostrarTitulo() {
+        if(u != null){
+            String titulo = "Unidad Procesadora: " + u.getNombre() + " | Gestor: " + g.getNombreCompleto();
+            vista.mostrarTitulo(titulo);
+        }
+    }
+    
+    public ArrayList<UnidadProcesadora> getUnidades(){
+        return Fachada.getInstancia().getUnidades();
+    }
+    
+    public void listarUnidades(){
+        vista.listarUnidades(Fachada.getInstancia().getUnidades());
     }
 
-    public void mostrarPedidosUnidad(){
+    public void seleccionarUnidad(UnidadProcesadora unidad){
+        this.u = unidad;
+        mostrarPedidosUnidad();
+    }
+    
+    public void agregarPedidoUnidad(){
         ArrayList<Pedido> pedidos = Fachada.getInstancia().getPedidos();
-        ArrayList<Pedido> pedidosUnidad = new ArrayList<>();
-
+        
         for(Pedido p : pedidos){
-            if(u.getProductos().contains(p.getProducto())){
+            if(u.getProductos().contains(p.getProducto()) && !u.getPedidos().contains(p)){
+                u.setPedido(p);
+            }
+        }
+    }
+    
+    public void mostrarPedidosUnidad(){
+        
+        ArrayList<Pedido> pedidosUnidad = new ArrayList<>();
+        
+        for(Pedido p : u.getPedidos()){
+            if(p.getGestorAsignado() == null && !p.Procesado()){
                 pedidosUnidad.add(p);
             }
         }
-        
-        vista.mostrarPedidosUnidadProcesadora(pedidosUnidad);
-        
+        vista.mostrarPedidosUnidad(Fachada.getInstancia().getPedidos());  
     }
+    
     @Override
     public void actualizar(Object evento, Observable origen) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(evento.equals(Fachada.Eventos.agregarPedido)){
+            mostrarPedidosUnidad();
+        }
     }
     
 }

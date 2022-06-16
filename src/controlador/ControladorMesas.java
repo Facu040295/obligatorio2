@@ -87,6 +87,12 @@ public class ControladorMesas implements Observador {
         return productos;
     }
     
+    public void mostrarServicio(Mesa m){
+        if(m.isOcupado()){
+            vista.mostrarServicio(m.getServicio());
+        }
+    }
+    
     /*public void ListarProductos(){
         vista.listarProductos(getProductos());
     }*/
@@ -104,15 +110,13 @@ public class ControladorMesas implements Observador {
         Servicio s = m.getServicio();
         Pedido pedido = new Pedido(p, cantidad, descripcion, false, null);
         s.setPedido(pedido);
-        s.setMontoTotal(cantidad*p.getPrecioUnitario());
     }
 
-        
+    
     @Override
     public void actualizar(Object evento, Observable origen) {
         if(evento.equals(Fachada.Eventos.abrirMesa)){
             MesasAsignadas();
         }
-
     }
 }

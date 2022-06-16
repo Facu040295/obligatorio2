@@ -26,9 +26,11 @@ public class Servicio extends Observable {
     public ArrayList<Pedido> getPedidos() {
         return pedidos;
     }
-    
+
     public void setPedido(Pedido p) {
         pedidos.add(p);
+        float montoPedido = (p.getProducto().getPrecioUnitario() * p.getCantidad()); 
+        sumarTotal(montoPedido);
         this.avisar(Eventos.agregarPedido);
     }
 
@@ -36,8 +38,8 @@ public class Servicio extends Observable {
         return montoTotal;
     }
 
-    public void setMontoTotal(float montoTotal) {
-        this.montoTotal = montoTotal;
+    public void sumarTotal(float monto) {
+        montoTotal += monto;
     }
-    
+
 }

@@ -4,30 +4,33 @@
  */
 package vista;
 
+import Logica.Fachada;
 import Logica.Gestor;
 import Logica.Pedido;
+import Logica.Sesion;
 import Logica.UnidadProcesadora;
 import controlador.ControladorMonitorPedidos;
-import controlador.IvistaMonitorPedidos;
 import java.util.ArrayList;
+import controlador.iVistaMonitorPedidos;
 
 /**
  *
  * @author facundo.lopez
  */
-public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMonitorPedidos{
+public class VistaGestores extends javax.swing.JDialog implements iVistaMonitorPedidos{
     
     private ControladorMonitorPedidos controlador;
 
     /**
      * Creates new form VistaMonitorPedidos
      */
-    public VistaMonitorPedidos(java.awt.Frame parent, boolean modal, Gestor g, UnidadProcesadora u) {
+    public VistaGestores(java.awt.Frame parent, boolean modal, Sesion sesion) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
-        this.controlador = new ControladorMonitorPedidos(g, u, this);
-        controlador.mostrarPedidosUnidad();
+        this.controlador = new ControladorMonitorPedidos(sesion, this);
+        controlador.listarUnidades();
+        
     }
 
     /**
@@ -47,6 +50,9 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
         jLabel2 = new javax.swing.JLabel();
         btn_Procesar = new javax.swing.JButton();
         btn_Finalizar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        cmb_Unidades = new javax.swing.JComboBox<>();
+        btn_SeleccionarUnidad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -67,29 +73,42 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
             }
         });
 
+        jLabel3.setText("Unidad Procesadora:");
+
+        btn_SeleccionarUnidad.setText("Seleccionar");
+        btn_SeleccionarUnidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_SeleccionarUnidadActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btn_Procesar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(236, 236, 236)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cmb_Unidades, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn_SeleccionarUnidad))
+                        .addComponent(jLabel1))
+                    .addComponent(btn_Procesar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_Finalizar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_Finalizar)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -97,21 +116,27 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cmb_Unidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_SeleccionarUnidad))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane1)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Finalizar)
-                    .addComponent(btn_Procesar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_Procesar)
+                    .addComponent(btn_Finalizar))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jScrollPane1, jScrollPane2});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -120,12 +145,21 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_FinalizarActionPerformed
 
+    private void btn_SeleccionarUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SeleccionarUnidadActionPerformed
+        UnidadProcesadora u = controlador.getUnidades().get(cmb_Unidades.getSelectedIndex());
+        controlador.seleccionarUnidad(u);
+        controlador.mostrarTitulo();
+    }//GEN-LAST:event_btn_SeleccionarUnidadActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Finalizar;
     private javax.swing.JButton btn_Procesar;
+    private javax.swing.JButton btn_SeleccionarUnidad;
+    private javax.swing.JComboBox<String> cmb_Unidades;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> lst_PedidosGestor;
@@ -133,7 +167,7 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void mostrarPedidosUnidadProcesadora(ArrayList<Pedido> pedidos) {
+    public void mostrarPedidosUnidad(ArrayList<Pedido> pedidos) {
         
         ArrayList<String> listado = new ArrayList();
         for (Pedido p : pedidos) {
@@ -153,5 +187,12 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
     @Override
     public void mostrarTitulo(String titulo) {
         this.setTitle(titulo);
+    }
+
+    @Override
+    public void listarUnidades(ArrayList<UnidadProcesadora> unidades) {
+        for(UnidadProcesadora u : unidades){
+            cmb_Unidades.addItem(u.getNombre());
+        }
     }
 }
