@@ -623,6 +623,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Aplicar Descuento"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_DescuentoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_ConfirmarCierre">
           <Properties>

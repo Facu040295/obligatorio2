@@ -382,6 +382,11 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
         lbl_IngresarCliente.setText("Ingresar cliente:");
 
         btn_Descuento.setText("Aplicar Descuento");
+        btn_Descuento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_DescuentoActionPerformed(evt);
+            }
+        });
 
         btn_ConfirmarCierre.setText("Confirmar Cierre");
         btn_ConfirmarCierre.addActionListener(new java.awt.event.ActionListener() {
@@ -584,6 +589,10 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
         logout();
     }//GEN-LAST:event_formWindowClosing
 
+    private void btn_DescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DescuentoActionPerformed
+        AplicarDescuento();
+    }//GEN-LAST:event_btn_DescuentoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList Lst_Pedidos;
@@ -745,6 +754,11 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
         }
     }
 
+    private void AplicarDescuento() {
+        String cliente = txt_NroCli.getText();
+        controlador.aplicarDescuento(mesaSeleccionada.getServicio(), cliente);
+    }
+    
     @Override
     public void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);

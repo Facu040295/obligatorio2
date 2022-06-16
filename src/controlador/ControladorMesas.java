@@ -1,5 +1,6 @@
 package controlador;
 
+import Logica.Cliente;
 import Logica.Fachada;
 import Logica.Mesa;
 import Logica.MesasException;
@@ -149,6 +150,18 @@ public class ControladorMesas implements Observador {
         return agregado;
     }
 
+    public void aplicarDescuento(Servicio s, String cliente) {
+        for (Cliente c : fachada.getClientes()) {
+            if(c.getId() == Integer.parseInt(cliente)){
+                if(c.getTipoCliente().getNombre() == "Comun")
+                    for (Pedido p : s.getPedidos()) {
+                        if(p.getProducto().getNombre() == "Cafe"){
+                            
+                        }
+                    }
+            }
+        }
+    }
     
     @Override
     public void actualizar(Object evento, Observable origen) {
@@ -156,4 +169,6 @@ public class ControladorMesas implements Observador {
             mesasAsignadas();
         }
     }
+
+
 }

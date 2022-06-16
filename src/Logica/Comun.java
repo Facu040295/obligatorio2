@@ -1,9 +1,17 @@
 package Logica;
 
-public class Comun extends Cliente{
+public class Comun extends TipoCliente{
     
-    public Comun(int id, String nombre, String email) {
-        super(id, nombre, email);
+    public Comun() {
+        super("Comun");
+    }
+
+    @Override
+    protected boolean validar(String nombre) {
+        if (nombre == "Comun"){
+            return true;
+        }
+        return false;
     }
     
 }

@@ -1,9 +1,17 @@
 package Logica;
 
-public class Preferencial extends Cliente{
+public class Preferencial extends TipoCliente{
     
-    public Preferencial(int id, String nombre, String email) {
-        super(id, nombre, email);
+    public Preferencial() {
+        super("Preferencial");
+    }
+
+    @Override
+    protected boolean validar(String nombre) {
+        if (nombre == "Preferencial"){
+            return true;
+        }
+        return false;
     }
     
 }

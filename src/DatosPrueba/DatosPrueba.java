@@ -1,9 +1,6 @@
 package DatosPrueba;
 
 import Logica.Fachada;
-import Logica.Mesa;
-import Logica.Mozo;
-import java.util.ArrayList;
 
 public class DatosPrueba {
     public static void cargar() {
@@ -71,6 +68,7 @@ public class DatosPrueba {
         fachada.agregarProducto(20,"Nigiri",820,180,fachada.getUnidades().get(2));
         fachada.agregarProducto(21,"Futomaki",840,170,fachada.getUnidades().get(2));
         
-        
+        //---- Clientes ----------------------
+        fachada.agregarCliente(1, "Cliente 1", "a@a.com", "Comun");
     }
 }

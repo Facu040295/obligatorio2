@@ -7,6 +7,7 @@ public class SistemaMesas {
     private ArrayList<Mesa> mesas = new ArrayList<>();
     private ArrayList<Servicio> servicios = new ArrayList<>();
     private ArrayList<Pedido> pedidos = new ArrayList<>();
+    private ArrayList<Cliente> clientes = new ArrayList<>();
     
     public void agregarMesa(int numero, String m) {    
       ArrayList<Mozo> mozos = Fachada.getInstancia().getMozos();
@@ -14,6 +15,7 @@ public class SistemaMesas {
         if (mozo.getUser().equals(m) && mozo.getMesasAsignadas().size() < 5) {
             Mesa mesa = new Mesa(numero, mozo);
             mozo.getMesasAsignadas().add(mesa);
+            mesas.add(mesa);
         }
       }
     }
@@ -48,6 +50,20 @@ public class SistemaMesas {
         }
         
         return pedidos;
+    }
+
+    public ArrayList<Cliente> getClientes(){
+        return clientes;
+    }
+    
+    public void agregarCliente(int id, String nombre, String email, String tipoCliente) {
+        Cliente cliente = new Cliente(id, nombre,email);
+        cliente.ValidarTipoCliente(tipoCliente);
+        for(Cliente c : clientes) {
+            if (!c.equals(cliente)) {
+                clientes.add(cliente);
+            }
+        }
     }
     
 }

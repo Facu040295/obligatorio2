@@ -52,6 +52,14 @@ public class Fachada extends Observable {
         sMesas.agregarMesa(numero, m);
     }
     
+    public void agregarCliente(int id, String nombre, String email, String tipoCliente) {
+        sMesas.agregarCliente(id, nombre, email, tipoCliente);
+    }
+    
+    public ArrayList<Cliente> getClientes() {
+        return sMesas.getClientes();
+    }
+    
     public ArrayList<Pedido> getPedidos() {
         return sMesas.getPedidos();
     }
