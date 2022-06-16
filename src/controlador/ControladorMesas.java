@@ -114,6 +114,16 @@ public class ControladorMesas implements Observador {
         }
     }
     
+    public ArrayList<String> cargarServicioMesa(Servicio s){
+        ArrayList<String> listado = new ArrayList();
+        for (Pedido p : s.getPedidos()) {
+            listado.add(p.getProducto().getNombre() + " - " + p.getCantidad()
+                        + " - " + p.getProducto().getPrecioUnitario() + " - " + 
+                        (p.getProducto().getPrecioUnitario() * p.getCantidad()));
+        }
+        return listado;
+    }
+    
     /*public void ListarProductos(){
         vista.listarProductos(getProductos());
     }*/

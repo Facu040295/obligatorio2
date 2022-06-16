@@ -5,7 +5,6 @@
 package controlador;
 
 import Logica.Mesa;
-import Logica.MesasException;
 import Logica.Producto;
 import Logica.Servicio;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public interface IVistaMesas {
 
     public void listarProductos(ArrayList<Producto> productos);
     
-    public void mostrarServicio(Servicio servicio);
+    public void mostrarServicio(Servicio s);
     
     public void agregarPedido(Mesa m, Producto p, String descripcion, int cantidad);
 

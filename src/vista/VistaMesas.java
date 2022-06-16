@@ -706,8 +706,7 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
             JOptionPane.showMessageDialog(null, "La mesa se abrió correctamente");
             pnl_CierreMesa.setVisible(false);
             pnl_MostrarBeneficio.setVisible(false);
-            mostrarServicio(m.getServicio());
-            //controlador.mostrarServicio(m);
+            controlador.mostrarServicio(m);
             pnl_Servicio.setVisible(true);
             mostrarMesasAsignadas(controlador.getMesasAsignadas());
         }
@@ -722,14 +721,9 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
     
     @Override
     public void mostrarServicio(Servicio s){
-        /*controlador.mostrarServicio(m);
-        for (Pedido p : s.getPedidos()) {
-            listado.add(p.getProducto().getNombre() + " - " + p.getCantidad()
-                        + " - " + p.getProducto().getPrecioUnitario() + " - " + 
-                        (p.getProducto().getPrecioUnitario() * p.getCantidad()));
-        }
+        ArrayList<String> listado = controlador.cargarServicioMesa(s);
         lst_PedidosServicio.setListData(listado.toArray());
-        lbl_Total.setText("Total del servicio: $" + s.getMontoTotal());*/
+        lbl_Total.setText("Total del servicio: $" + s.getMontoTotal());
     }
 
     @Override
