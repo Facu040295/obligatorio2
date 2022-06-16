@@ -763,4 +763,9 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
     public void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
+    
+    @Override
+    public void mostrarNotificacion(String notificacion) {
+        JOptionPane.showMessageDialog(this, notificacion, "Notificación", JOptionPane.INFORMATION_MESSAGE);
+    }
 }

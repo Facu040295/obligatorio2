@@ -52,6 +52,22 @@ public class Fachada extends Observable {
         sMesas.agregarMesa(numero, m);
     }
     
+    public void setUltimoPedidoProcesado(Pedido p) {
+        sMesas.setUltimoPedidoProcesado(p);
+    }
+    
+    public Pedido getUltimoPedidoProcesado(){
+        return sMesas.getUltimoPedidoProcesado();
+    }
+    
+    public void setUltimoPedidoFinalizado(Pedido p) {
+        sMesas.setUltimoPedidoFinalizado(p);
+    }
+    
+    public Pedido getUltimoPedidoFinalizado(){
+        return sMesas.getUltimoPedidoFinalizado();
+    }
+    
     public void agregarCliente(int id, String nombre, String email, String tipoCliente) {
         sMesas.agregarCliente(id, nombre, email, tipoCliente);
     }

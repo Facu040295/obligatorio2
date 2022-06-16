@@ -8,6 +8,8 @@ public class SistemaMesas {
     private ArrayList<Servicio> servicios = new ArrayList<>();
     private ArrayList<Pedido> pedidos = new ArrayList<>();
     private ArrayList<Cliente> clientes = new ArrayList<>();
+    private Pedido ultimoPedidoProcesado;
+    private Pedido ultimoPedidoFinalizado;
     
     public void agregarMesa(int numero, String m) {    
       ArrayList<Mozo> mozos = Fachada.getInstancia().getMozos();
@@ -50,6 +52,22 @@ public class SistemaMesas {
         }
         
         return pedidos;
+    }
+    
+    public void setUltimoPedidoProcesado(Pedido p){
+        ultimoPedidoProcesado = p;
+    }
+    
+    public Pedido getUltimoPedidoProcesado(){
+        return ultimoPedidoProcesado;
+    }
+    
+    public void setUltimoPedidoFinalizado(Pedido p){
+        this.ultimoPedidoFinalizado = p;
+    }
+    
+    public Pedido getUltimoPedidoFinalizado(){
+        return ultimoPedidoFinalizado;
     }
 
     public ArrayList<Cliente> getClientes(){

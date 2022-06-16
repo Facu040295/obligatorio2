@@ -17,7 +17,7 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
         setLocationRelativeTo(null);
         this.controlador = new ControladorMonitorPedidos(sesion, this);
         controlador.listarUnidades();
-        
+        controlador.getPedidosGestor();
     }
 
     @SuppressWarnings("unchecked")
@@ -214,8 +214,8 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
         ArrayList<String> listado = new ArrayList();
         for (Pedido p : pedidos) {
             listado.add(p.getProducto().getNombre() + " - " + p.getCantidad()
-                        + " - " + p.getProducto().getPrecioUnitario() + " - " + 
-                        (p.getProducto().getPrecioUnitario() * p.getCantidad()));
+                        + " - $" + p.getProducto().getPrecioUnitario() + " P/U - $" + 
+                        (p.getProducto().getPrecioUnitario() * p.getCantidad()) + " - " + p.getEstado());
         }
         
         lst_PedidosUnidad.setListData(listado.toArray());
@@ -227,8 +227,8 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
         ArrayList<String> listado = new ArrayList();
         for (Pedido p : pedidos) {
             listado.add(p.getProducto().getNombre() + " - " + p.getCantidad()
-                        + " - " + p.getProducto().getPrecioUnitario() + " - " + 
-                        (p.getProducto().getPrecioUnitario() * p.getCantidad()));
+                        + " - $" + p.getProducto().getPrecioUnitario() + " P/U - $" + 
+                        (p.getProducto().getPrecioUnitario() * p.getCantidad()) + " - " + p.getEstado());
         }
         
         lst_PedidosGestor.setListData(listado.toArray());        

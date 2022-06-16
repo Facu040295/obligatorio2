@@ -8,13 +8,15 @@ public class Pedido extends Observable{
     private String descripcion;
     private boolean finalizado;
     private Gestor gestorAsignado;
+     private String estado;
 
-    public Pedido(Producto producto, int cantidad, String descripcion, boolean finalizado, Gestor gestorAsignado) {
+    public Pedido(Producto producto, int cantidad, String descripcion, boolean finalizado, Gestor gestorAsignado, String estado) {
         this.producto = producto;
         this.cantidad = cantidad;
         this.descripcion = descripcion;
         this.finalizado = false;
         this.gestorAsignado = null;
+        this.estado = this.getEstado();
     }
 
     public Producto getProducto() {
@@ -59,6 +61,18 @@ public class Pedido extends Observable{
 
     public void setGestorAsignado(Gestor gestorAsignado) {
         this.gestorAsignado = gestorAsignado;
+    }
+    
+    public String getEstado() {
+        String estado = "Activo";
+       
+        if(getGestorAsignado() != null){
+            estado = "Procesando...";
+        }
+        if(isFinalizado()){
+            estado = "Finalizado.";
+        }
+        return estado;
     }
 
 }

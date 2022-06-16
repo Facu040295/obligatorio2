@@ -26,5 +26,7 @@ public interface IVistaMesas {
     public void agregarPedido(Mesa m, Producto p, String descripcion, int cantidad);
 
     public void mostrarError(String mensaje);
+
+    public void mostrarNotificacion(String notificacion);
     
 }

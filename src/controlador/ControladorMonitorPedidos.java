@@ -82,8 +82,11 @@ public class ControladorMonitorPedidos implements Observador{
     }
     
     public void agregarPedidoGestor(Pedido p){
-        p.setGestorAsignado(g);
-        g.setPedido(p);
+        if(p != null){
+            Fachada.getInstancia().setUltimoPedidoProcesado(p);
+            p.setGestorAsignado(g);
+            g.setPedido(p);
+        }
     }
     
     public ArrayList<Pedido> getPedidosGestor() {
@@ -103,7 +106,10 @@ public class ControladorMonitorPedidos implements Observador{
     }
     
     public void finalizarPedido(Pedido p){
-        p.setFinalizado(true);
+        if(p != null){
+            Fachada.getInstancia().setUltimoPedidoFinalizado(p);
+            p.setFinalizado(true);
+        }
     }
     
     @Override
