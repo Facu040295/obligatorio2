@@ -33,7 +33,7 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
         jScrollPane1 = new javax.swing.JScrollPane();
         lst_PedidosUnidad = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
-        lst_PedidosGestor = new javax.swing.JList<>();
+        lst_PedidosGestor = new javax.swing.JList();
         jLabel2 = new javax.swing.JLabel();
         btn_Procesar = new javax.swing.JButton();
         btn_Finalizar = new javax.swing.JButton();
@@ -87,6 +87,11 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
         jLabel2.setText("Pedidos del Gestor");
 
         btn_Procesar.setText("Procesar");
+        btn_Procesar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ProcesarActionPerformed(evt);
+            }
+        });
 
         btn_Finalizar.setText("Finalizar");
         btn_Finalizar.addActionListener(new java.awt.event.ActionListener() {
@@ -173,6 +178,11 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
        logout();
     }//GEN-LAST:event_formWindowClosing
 
+    private void btn_ProcesarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ProcesarActionPerformed
+        Pedido p = controlador.getPedidosUnidad().get(lst_PedidosUnidad.getSelectedIndex());
+        controlador.agregarPedidoGestor(p);
+    }//GEN-LAST:event_btn_ProcesarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Finalizar;
@@ -185,7 +195,7 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_Unidades;
-    private javax.swing.JList<String> lst_PedidosGestor;
+    private javax.swing.JList lst_PedidosGestor;
     private javax.swing.JList lst_PedidosUnidad;
     private javax.swing.JPanel pnl_Unidades;
     // End of variables declaration//GEN-END:variables
@@ -211,8 +221,16 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
     }
 
     @Override
-    public void mostrarPedidosGestor(ArrayList<Pedido> p) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void mostrarPedidosGestor(ArrayList<Pedido> pedidos) {
+        
+        ArrayList<String> listado = new ArrayList();
+        for (Pedido p : pedidos) {
+            listado.add(p.getProducto().getNombre() + " - " + p.getCantidad()
+                        + " - " + p.getProducto().getPrecioUnitario() + " - " + 
+                        (p.getProducto().getPrecioUnitario() * p.getCantidad()));
+        }
+        
+        lst_PedidosGestor.setListData(listado.toArray());        
     }
 
     @Override

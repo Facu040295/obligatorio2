@@ -1,6 +1,8 @@
 package Logica;
 
-public abstract class Usuario {
+import Observador.Observable;
+
+public abstract class Usuario extends Observable{
     private String user;
     private String password;
     private String nombreCompleto;

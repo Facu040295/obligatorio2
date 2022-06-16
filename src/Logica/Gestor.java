@@ -1,10 +1,11 @@
 package Logica;
 
+import Logica.Fachada.Eventos;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Gestor extends Usuario{
+public class Gestor extends Usuario {
     private Date ultimaConexion;
     private ArrayList<Pedido> pedidos;
     
@@ -27,6 +28,7 @@ public class Gestor extends Usuario{
     
     public void setPedido(Pedido p){
         pedidos.add(p);
+        Fachada.getInstancia().avisar(Eventos.agregarPedidoGestor);
     }
     
 }

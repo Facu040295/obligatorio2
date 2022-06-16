@@ -62,7 +62,7 @@ public class ControladorMonitorPedidos implements Observador{
         }
     }
     
-    public void mostrarPedidosUnidad(){
+    public ArrayList<Pedido> getPedidosUnidad(){
 
         ArrayList<Pedido> pedidosActivos = new ArrayList<>();
         
@@ -71,7 +71,13 @@ public class ControladorMonitorPedidos implements Observador{
                 pedidosActivos.add(p);
             }
         }
-        interfase.mostrarPedidosUnidad(pedidosActivos);  
+        
+        return pedidosActivos;
+          
+    }
+
+    public void mostrarPedidosUnidad() {
+        interfase.mostrarPedidosUnidad(getPedidosUnidad());
     }
     
     public void agregarPedidoGestor(Pedido p){
@@ -88,6 +94,11 @@ public class ControladorMonitorPedidos implements Observador{
         if(evento.equals(Fachada.Eventos.agregarPedido)){
             actualizarPedidosUnidad();
             mostrarPedidosUnidad();
+        }
+        if(evento.equals(Fachada.Eventos.agregarPedidoGestor)){
+            actualizarPedidosUnidad();
+            mostrarPedidosUnidad();
+            mostrarPedidosGestor();
         }
     }
 

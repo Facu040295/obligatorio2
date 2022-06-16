@@ -193,7 +193,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -207,6 +207,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Procesar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ProcesarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_Finalizar">
           <Properties>
