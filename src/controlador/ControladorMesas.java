@@ -95,16 +95,16 @@ public class ControladorMesas implements Observador {
     }
   
     
-    public ArrayList<Producto> getProductos() {
+    public ArrayList<Producto> ProductosConStock() {
         ArrayList<UnidadProcesadora> unidades = fachada.getUnidades();
         ArrayList<Producto> productos = new ArrayList<>();
         
         for (UnidadProcesadora unidad : unidades) {
             for (Producto producto : unidad.getProductos()) {
+                if (producto.getStock() > 0)
                 productos.add(producto);
             }
         }
-        
         return productos;
     }
     
@@ -135,12 +135,13 @@ public class ControladorMesas implements Observador {
         if (cantidad < 1){
             throw new MesasException("Cantidad inválida");
         }
-        /*if (supera cantidad en stock){
-            throw new MesasException("Sin stock, solo quedan " + cantidad);
-        }*/
+        if (p.getStock() < cantidad){
+            throw new MesasException("Sin stock, solo quedan " + p.getStock());
+        }
         Servicio s = m.getServicio();
         Pedido pedido = new Pedido(p, cantidad, descripcion, false, null);
         s.setPedido(pedido);
+        p.setStock(p.getStock()- cantidad);
     }
 
     

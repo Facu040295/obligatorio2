@@ -543,7 +543,7 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
     }//GEN-LAST:event_btn_CerrarMesaActionPerformed
 
     private void btn_NuevoPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NuevoPedidoActionPerformed
-        listarProductos(controlador.getProductos());
+        listarProductos(controlador.ProductosConStock());
         txt_Descripcion.setText("");
         int_Cantidad.setValue(0);
         cmb_Productos.setSelectedIndex(0);
@@ -553,7 +553,7 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
     }//GEN-LAST:event_btn_NuevoPedidoActionPerformed
 
     private void btn_AgregarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarPedidoActionPerformed
-        Producto p = controlador.getProductos().get(cmb_Productos.getSelectedIndex());
+        Producto p = controlador.ProductosConStock().get(cmb_Productos.getSelectedIndex());
         String descripcion = txt_Descripcion.getText();
         int cantidad = (int) int_Cantidad.getValue();
         agregarPedido(mesaSeleccionada, p, descripcion, cantidad);
@@ -714,6 +714,7 @@ public class VistaMesas extends javax.swing.JDialog implements IVistaMesas{
 
     @Override
     public void listarProductos(ArrayList<Producto> productos) {
+        cmb_Productos.removeAllItems();
         for(Producto producto : productos){
             cmb_Productos.addItem(producto.getNombre());
         }
