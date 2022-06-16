@@ -10,7 +10,7 @@ public class Fachada extends Observable {
     
     private static Fachada instancia = new Fachada();
 
-    public enum Eventos{abrirMesa, agregarPedido, agregarPedidoGestor};
+    public enum Eventos{abrirMesa, agregarPedido, agregarPedidoGestor, finalizarPedido};
     
     public static Fachada getInstancia() {
         return instancia;

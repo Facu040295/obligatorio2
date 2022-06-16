@@ -1,6 +1,8 @@
 package Logica;
 
-public class Pedido {
+import Observador.Observable;
+
+public class Pedido extends Observable{
     private Producto producto;
     private int cantidad;
     private String descripcion;
@@ -48,6 +50,7 @@ public class Pedido {
 
     public void setFinalizado(boolean finalizado) {
         this.finalizado = finalizado;
+        Fachada.getInstancia().avisar(Fachada.Eventos.finalizarPedido);
     }
 
     public Gestor getGestorAsignado() {

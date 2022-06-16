@@ -164,7 +164,8 @@ public class VistaMonitorPedidos extends javax.swing.JDialog implements IvistaMo
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_FinalizarActionPerformed
-        // TODO add your handling code here:
+        Pedido p = controlador.getPedidosGestor().get(lst_PedidosGestor.getSelectedIndex());
+        controlador.finalizarPedido(p);
     }//GEN-LAST:event_btn_FinalizarActionPerformed
 
     private void btn_SeleccionarUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SeleccionarUnidadActionPerformed

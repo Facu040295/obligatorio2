@@ -1,6 +1,7 @@
 package controlador;
 
 import Logica.Fachada;
+import Logica.Fachada.Eventos;
 import Logica.Gestor;
 import Logica.Pedido;
 import Logica.Servicio;
@@ -81,24 +82,51 @@ public class ControladorMonitorPedidos implements Observador{
     }
     
     public void agregarPedidoGestor(Pedido p){
-        p.setGestorAsignado(sesion.getUsuarioGestor());
-        sesion.getUsuarioGestor().setPedido(p);
+        p.setGestorAsignado(g);
+        g.setPedido(p);
+    }
+    
+    public ArrayList<Pedido> getPedidosGestor() {
+        ArrayList<Pedido> pedidosActivos = new ArrayList<>();
+        
+        for (Pedido p : g.getPedidos()) {
+            if(!p.isFinalizado()){
+                pedidosActivos.add(p);
+            }
+        }
+        
+        return pedidosActivos;
     }
     
     public void mostrarPedidosGestor(){
-        interfase.mostrarPedidosGestor(g.getPedidos());
+        interfase.mostrarPedidosGestor(getPedidosGestor());
+    }
+    
+    public void finalizarPedido(Pedido p){
+        p.setFinalizado(true);
     }
     
     @Override
     public void actualizar(Object evento, Observable origen) {
-        if(evento.equals(Fachada.Eventos.agregarPedido)){
-            actualizarPedidosUnidad();
-            mostrarPedidosUnidad();
-        }
-        if(evento.equals(Fachada.Eventos.agregarPedidoGestor)){
-            actualizarPedidosUnidad();
-            mostrarPedidosUnidad();
-            mostrarPedidosGestor();
+        
+        switch ((Eventos)evento) {
+            case agregarPedido:
+                actualizarPedidosUnidad();
+                mostrarPedidosUnidad();
+                break;
+                
+            case agregarPedidoGestor:
+                actualizarPedidosUnidad();
+                mostrarPedidosUnidad();
+                mostrarPedidosGestor();
+                break;
+                
+            case finalizarPedido:
+                actualizarPedidosUnidad();
+                mostrarPedidosUnidad();
+                mostrarPedidosGestor();
+                break;
+            
         }
     }
 
@@ -106,5 +134,7 @@ public class ControladorMonitorPedidos implements Observador{
         fachada.logout(sesion);
         fachada.quitar(this);
     }
+
+    
     
 }
