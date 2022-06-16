@@ -39,5 +39,10 @@ public class LoginGestor extends LoginAbstracto{
     public void ejecutarProximoCasoUso(Object dato) {
         new VistaMonitorPedidos(null, false, (Sesion) dato).setVisible(true);
     }
+
+    @Override
+    public void ejecutarProximoCasoUso(Sesion s) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
